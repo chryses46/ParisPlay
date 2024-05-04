@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    .container.page-title-container
+        h1.page-title Media
+    
+    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+        ol.carousel-indicators
+            li(data-target='#carouselExampleIndicators', data-slide-to='0', class='active')
+            li(data-target='#carouselExampleIndicators', data-slide-to='1')
+            li(data-target='#carouselExampleIndicators', data-slide-to='2')
+        .carousel-inner
+            .carousel-item.active
+                img(src='/images/pic6.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic6.jpeg')
+            //- Holiday pic
+            //- .carousel-item
+            //-     img(src='/images/pic2.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic2.jpeg')
+            .carousel-item
+                img(src='/images/pic9.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic9.jpeg')
+            .carousel-item
+                img(src='/images/pic3.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic3.jpeg')
+            .carousel-item
+                img(src='/images/pic10.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic10.jpeg')
+            .carousel-item
+                img(src='/images/pic4.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic4.jpeg')
+            .carousel-item
+                img(src='/images/pic5.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic5.jpeg')
+            .carousel-item
+                img(src='/images/pic6.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic6.jpeg')
+            .carousel-item
+                img(src='/images/pic8.jpeg', class='d-block w-100', alt='...', data-toggle='modal', data-target='#imageModal', data-image='/images/pic8.jpeg')
+
+        a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+        a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
+
+    #imageModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog.modal-lg(role='document')
+            .modal-content
+                .modal-body
+                    img#modalImage(src='', class='img-fluid')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    script.
+        $('#carouselExampleIndicators').on('slide.bs.carousel', function (e) {
+            var image = $(e.relatedTarget).find('img').data('image');
+            $('#modalImage').attr('src', image);
+        });

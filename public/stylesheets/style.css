@@ -1,0 +1,101 @@
+body {
+  margin: 1em 1em 6em 1em;
+  font: 27px serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.page-title{
+    font-size: 4em;
+    text-align: center;
+    font-family: serif;
+}
+.page-title-container{
+    margin-top: 3em;
+}
+.subtitle {
+    font-size: 4em;
+    text-align: center;
+    font-family: serif;
+    text-decoration: none;
+    color: coral;
+
+}
+.container {
+  text-align: center;
+}
+.socials svg{
+  height: 4rem;
+  width: 4rem;
+}
+footer div a svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+footer div a btn-primary{
+  background-color: none;
+  border-color: none;
+}
+.about-info{
+  font-size: 2em;
+}
+.about-info svg{
+  width: 4rem;
+  height: 4rem;
+}
+.about-info > .table-responsive {
+  overflow-x: clip;
+}
+.about-info > .table td {
+  border: none;
+}
+@media only screen and (max-width: 850px) {
+  body{
+    font: 22px serif;
+  }
+}
+@media only screen and (max-width: 500px) {
+  body{
+    font: 14px serif;
+  }
+  .page-title{
+    font-size: 2em;
+  }
+
+  .subtitle {
+    font-size: 2em;
+  }
+  .socials svg{
+    height: 2rem;
+    width: 2rem;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  footer div a svg {
+    width: 2em;
+    height: 2rem;
+  }
+
+  .about-info{
+    font-size: 1em;
+  }
+
+  .about-info svg{
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .fb-view{
+    padding:0;
+  }
+}
+
