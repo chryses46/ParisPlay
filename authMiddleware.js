@@ -16,7 +16,7 @@ async function ensureAuthenticated(req, res, next) {
         }]
       });
       // Attach the user to the request object
-      console.debug("user from db: ",user.dataValues);
+      console.debug("user from db: ",user.dataValues.children[0].dataValues);
       req.user = {
         email: user.dataValues.email,
         name: user.dataValues.name,
