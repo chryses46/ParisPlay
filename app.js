@@ -9,8 +9,34 @@ var eventsRouter = require('./routes/events');
 var aboutRouter = require('./routes/about');
 var mediaRouter = require('./routes/media');
 var privacyRouter = require('./routes/privacy');
+var profileRouter = require('./routes/profile');
 var app = express();
+var { ensureAuthenticated, ensureRole, getIdentity } = require('./authMiddleware');
+const { auth } = require('express-openid-connect');
 
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'rhX1UthnUTRENT_iPXHRCRd6cJJVnBTWFJT2H-36VrVwEYUHQANvF_E26nxUbgNP', //move this to somewhere safe later
+  baseURL: 'http://localhost:3000',
+  clientID: 'YdKkcUZMTGygJqDAUb2ntYInLltPFaNV',
+  issuerBaseURL: 'https://dev-t8xahfjokzvnnmtq.us.auth0.com',
+  routes: {
+    login: false,
+    postLogoutRedirect: 'http://localhost:3000',
+  },
+};
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+// req.isAuthenticated is provided from the auth router
+app.get('/login', (req, res) =>
+  res.oidc.login({
+    returnTo: '/profile',
+    authorizationParams: {
+      redirect_uri: 'http://localhost:3000/callback',
+    },
+  })
+);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -22,10 +48,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/events', eventsRouter);
+app.use('/events', getIdentity, eventsRouter);
 app.use('/about', aboutRouter);
 app.use('/media', mediaRouter);
 app.use('/privacy', privacyRouter);
+app.use('/profile', ensureAuthenticated, profileRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

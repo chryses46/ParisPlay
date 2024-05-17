@@ -1,6 +1,169 @@
 extends layout
 block content
     .container.page-title-container
-        h1.page-title Events
-        h2.subtitle Coming soon!
-        p Soon, you'll be able to book a birthday party or other event on this page. Stick around for updates soon! In the meantime, please give us a call!
+        h1.page-title Event Booking
+    .container 
+        p Please fill out the form below to begin booking your next event! 
+        form(action='/events/book' method='post' id='eventForm')
+            div.form-group.row
+                //label.col(for='adultName') Name
+                input.col.form-control(type='text' name='adultName' id='adultName' placeholder='Name*' value=user != null? user.name : "" required)
+            div.form-group.row
+                //label.col(for='adultEmail') Email
+                input.col.form-control(type='email' name='adultEmail' id='adultEmail' placeholder='Email*' value=user != null? user.email : "" required)
+            div.form-group.row
+                //label.col(for='adultPhone') Phone
+                input.col.form-control(type='tel' name='adultPhone' id='adultPhone' placeholder='Phone*' value=user != null? user.phone : "" required)
+            div.form-group.row
+                    //label.col(for='eventType')
+                    select.col.form-control(name='eventType' id='eventType')
+                        option(value='') Choose Event Type
+                        option(value='birthday') Birthday
+                        option(value='fieldTrip') Field Trip
+                        option(value='other') Other
+            div.form-group.row
+                label.col(for='date') *Day:
+                input.col.form-control(type='date' name='date' id='date' min=new Date().toISOString().split('T')[0] max=new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString().split('T')[0] required)
+            div.form-group.row
+                label.col(for='time') *Time:
+                input.col.form-control(type='time' name='time' id='time' required)
+            div.form-group.row
+                label.col(for='guests') *Number of Guests:
+                input.col.form-control(type='number' name='guests' id='guests' min='0' max='30' required)
+            div#birthday-fields(style='display:none;')
+                if  user && user.children != null && user.children.length > 0 
+                    .form-group.row 
+                        label.col(for='chosenChild') Choose a Child
+                        select.col.form-control(name='chosenChild' id='chosenChild')
+                            each child, index in user.children
+                                option(value=index) #{child.first_name}
+                div.form-group.row
+                    label.col(for='childAge') *Child's Age:
+                    input.col.form-control(type='number' name='childAge' id='childAge'  min='0' max='18')
+                div.form-group.row
+                    label.col(for='kidGender') *Child's Gender:
+                    select.col.form-control(name='kidGender' id='kidGender')
+                        option(value='default') -
+                        option(value='male') Male
+                        option(value='female') Female
+                div.form-group.row
+                    label.col(for='childColor') *Child's Favorite Color:
+                    input.col.form-control(type='text' name='childColor' id='childColor')
+                div.form-group.row
+                    label.col(for='theme') *Do you want a custom theme?
+                    select.col.form-control(name='theme' id='theme' required)
+                        option(value='default') Choose one
+                        option(value='yes') Yes
+                        option(value='no') No
+                div.form-group.row
+                    label.col(for='tableclothColor') *Tablecloth Color:
+                    select.col.form-control(name='tableclothColor' id='tableclothColor' )
+                        option(value='') Choose one
+                        option(value='red') Red
+                        option(value='orange') Orange
+                        option(value='yellow') Yellow
+                        option(value='green') Green
+                        option(value='blue') Blue
+                        option(value='purple') Purple
+                        option(value='black') Black
+                div.form-group.row
+                    label.col(for='food') *Will you bring food?
+                    select.col.form-control(name='food' id='food')
+                        option(value='') Choose one
+                        option(value='yes') Yes I will
+                        option(value='no') No I will not
+                        option(value='provide') Provide me food!
+                div.form-group.row
+                    label.col(for='invitations') *Should we make and send invitations for you?
+                    select.col.form-control(name='invitations' id='invitations')
+                        option(value='yes') Yes, please
+                        option(value='no') No thanks!
+            div#fieldTrip-fields(style='display:none;')
+                div.form-group.row
+                    label.col(for='fieldTripSchoolName') *School Name:
+                    select.col.form-control(name='fieldTripSchoolName' id='fieldTripSchoolName')
+                        option(value='') Choose School
+                        option(value='parisHS') Paris HS
+                        option(value='other') Other
+                div.form-group.row
+                    label.col(for='fieldTripNumKids') *Number of Children:
+                    input.col.form-control(type='number' name='fieldTripNumKids' id='fieldTripNumKids'  min='0' max='30')
+                div.form-group.row
+                    label.col(for='fieldTripNumTeachers') *Number of Teachers:
+                    input.col.form-control(type='number' name='fieldTripNumTeachers' id='fieldTripNumTeachers'  min='0' max='30')
+                div.form-group.row
+                    label.col(for='fieldTripAgeRange') *Children Age Range:
+                    input.col.form-control(type='number' name='fieldTripAgeRange' id='fieldTripAgeRange'  min='0' max='18')
+                div.form-group.row
+                    label.col(for='fieldTripDateRange') *Do you have multiple days and times?
+                    select.col.form-control(name='fieldTripDateRange' id='fieldTripDateRange')
+                        option(value='yes') Yes
+                        option(value='no') No
+                p Please call us if you need special days and times!
+                
+            div.form-group.row
+                label.col(for='comments') Comments:
+                textarea.col.form-control(name='comments' id='comments')
+            div.form-group.row
+                button.col-3.btn.btn-primary(type='submit') Book Now!
+    script.
+        var user = !{JSON.stringify(user)};
+        document.addEventListener('DOMContentLoaded', function() {
+            var chosenChildSelect = user != null ? document.getElementById('chosenChild') : null;
+            var childAgeInput = document.getElementById('childAge');
+            var eventTypeSelect = document.getElementById('eventType');
+            var birthdayFields = document.getElementById('birthday-fields');
+            var fieldTripFields = document.getElementById('fieldTrip-fields');
+            var timeInput = document.getElementById('time');
+            var dateInput = document.getElementById('date');
+            var eventForm = document.getElementById('eventForm');
+            var birthdayInputs = birthdayFields.querySelectorAll('input');
+
+            if (chosenChildSelect){
+                chosenChildSelect.addEventListener('change', function() {
+                    var chosenChild = user.children[chosenChildSelect.value];
+                    var age = Math.floor((new Date() - new Date(chosenChild.dob)) / (365.25 * 24 * 60 * 60 * 1000));
+                    childAgeInput.value = age;
+                });
+            };
+            
+            eventTypeSelect.addEventListener('change', function() {
+                if (eventTypeSelect.value === 'birthday') {
+                    birthdayFields.style.display = 'block';
+                    birthdayInputs.forEach(function(input) {
+                        input.required = true;
+                    });
+                    fieldTripFields.style.display = 'none';
+                } else if(eventTypeSelect.value == 'fieldTrip'){
+                    fieldTripFields.style.display = 'block';
+                    birthdayFields.style.display = 'none';
+                } else {
+                    fieldTripFields.style.display = 'none';
+                    birthdayFields.style.display = 'none';
+                    birthdayInputs.forEach(function(input) {
+                        input.required = false;
+                    });
+                }
+            });
+
+            dateInput.addEventListener('change', function() {
+                var dayOfWeek = new Date(dateInput.value).getDay();
+                if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Monday to Friday
+                    timeInput.min = '10:00';
+                    timeInput.max = '16:00';
+                } else { // Saturday and Sunday
+                    timeInput.min = '09:00';
+                    timeInput.max = '18:00';
+                }
+            });
+
+            eventForm.addEventListener('submit', function(event) {
+                var selectedTime = timeInput.value;
+                var minTime = timeInput.min;
+                var maxTime = timeInput.max;
+                if (selectedTime < minTime || selectedTime > maxTime) {
+                    alert('Please select a time between ' + minTime + ' and ' + maxTime);
+                    event.preventDefault();
+                }
+            });
+        });

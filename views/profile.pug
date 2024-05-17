@@ -1,0 +1,56 @@
+extends layout
+
+block content
+  .container.page-title-container
+    h1.page-title My Profile
+    h2= user.name
+  .container
+    form(action='/profile/update' method='POST')
+      .form-group
+        label(for='email') Email
+        input#email.form-control(type='text' name='email' value=user.email disabled)
+      .form-group
+        label(for='name') Name
+        input#name.form-control(type='text' name='name' value=user.name)
+      .form-group
+        label(for='phone') Phone
+        input#phone.form-control(type='phone' name='phone' value=user.phone)
+      button.btn.btn-primary(type='submit') Save
+  if user.children
+    .container 
+      h2 My Children
+      table.table.table-responsive.wrap-text
+        thead
+          tr
+            th First Name
+            th Last Name
+            th Birthday
+        tbody
+          each child, i in user.children
+            tr
+              td= child.first_name
+              td= child.last_name
+              td= child.dob
+              a(href='/profile/delete-child') Delete
+  .container 
+    button#addChildButton.btn(type='button') Add Child +
+    form#addChildForm(action='/profile/add-children' method='POST' style='display: none;')
+        .form-group
+            label(for='first_name') First Name
+            input#first_name.form-control(type='text' name='first_name' value='First name')
+        .form-group
+            label(for='last_name') Last Name
+            input#last_name.form-control(type='text' name='last_name' value='Last name')
+        .form-group
+            label(for='dob') Birthday
+            input#dob.form-control(type='date' name='dob' value='Birthday')
+        button.btn.btn-primary(type='submit') Submit
+  .container 
+    a.btn.mx-auto(type='button' href='/logout') Logout
+  
+  script.
+    document.getElementById('addChildButton').addEventListener('click', function() {
+        var status = document.getElementById('addChildForm').style.display;
+        document.getElementById('addChildForm').style.display = status =='block' ? 'none' : 'block';
+        this.innerHTML = status =='block' ? 'Add Child +': 'Close';
+    });

@@ -51,6 +51,9 @@ footer div a btn-primary{
 .about-info > .table td {
   border: none;
 }
+.wrap-text {
+  word-wrap: break-word;
+}
 @media only screen and (max-width: 850px) {
   body{
     font: 22px serif;
