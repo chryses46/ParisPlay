@@ -31,7 +31,6 @@ block content
               td= child.first_name
               td= child.last_name
               td= child.dob
-              a(href='/profile/delete-child') Delete
   .container 
     button#addChildButton.btn(type='button') Add Child +
     form#addChildForm(action='/profile/add-children' method='POST' style='display: none;')
