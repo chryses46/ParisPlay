@@ -23,9 +23,12 @@ async function ensureAuthenticated(req, res, next) {
         children: []
       };
 
-      user.dataValues.children.forEach(child => {
-        req.user.children.push(child.dataValues);
-      });
+      if(user.dataValues.children != null && user.dataValues.children > 0){
+        user.dataValues.children.forEach(child => {
+          req.user.children.push(child.dataValues);
+        });
+      };
+      
       next();
     } catch (error) {
       console.error('Error interacting with the database: ', error);
@@ -53,9 +56,11 @@ async function getIdentity(req, res, next) {
         children: []
       };
 
-      user.dataValues.children.forEach(child => {
-        req.user.children.push(child.dataValues);
-      });
+      if(user.dataValues.children != null && user.dataValues.children > 0){
+        user.dataValues.children.forEach(child => {
+          req.user.children.push(child.dataValues);
+        });
+      };
       next();
     } catch (error) {
       console.error('Error interacting with the database: ', error);
