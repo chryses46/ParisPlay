@@ -23,7 +23,7 @@ const config = {
   issuerBaseURL: 'https://dev-t8xahfjokzvnnmtq.us.auth0.com',
   routes: {
     login: false,
-    postLogoutRedirect: 'http://localhost:3000',
+    postLogoutRedirect: 'https://paris-play-8aaa1bdd35b5.herokuapp.com',
   },
 };
 // auth router attaches /login, /logout, and /callback routes to the baseURL
@@ -33,7 +33,9 @@ app.get('/login', (req, res) =>
   res.oidc.login({
     returnTo: '/profile',
     authorizationParams: {
-      redirect_uri: 'http://localhost:3000/callback',
+      redirect_uri: req.app.get('env') === 'development' ? 
+        'http://localhost:3000/callback' : 
+        "https://paris-play-8aaa1bdd35b5.herokuapp.com/callback"
     },
   })
 );
