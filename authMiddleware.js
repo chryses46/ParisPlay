@@ -16,13 +16,14 @@ async function ensureAuthenticated(req, res, next) {
         }]
       });
       // Attach the user to the request object
+      console.debug("user from db: ",user.dataValues);
       req.user = {
         email: user.dataValues.email,
         name: user.dataValues.name,
         phone: user.dataValues.phone,
         children: []
       };
-
+      
       if(user.dataValues.children != null && user.dataValues.children > 0){
         user.dataValues.children.forEach(child => {
           req.user.children.push(child.dataValues);
