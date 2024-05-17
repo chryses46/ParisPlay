@@ -18,7 +18,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: 'rhX1UthnUTRENT_iPXHRCRd6cJJVnBTWFJT2H-36VrVwEYUHQANvF_E26nxUbgNP', //move this to somewhere safe later
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://paris-play-8aaa1bdd35b5.herokuapp.com',
   clientID: 'YdKkcUZMTGygJqDAUb2ntYInLltPFaNV',
   issuerBaseURL: 'https://dev-t8xahfjokzvnnmtq.us.auth0.com',
   routes: {

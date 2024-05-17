@@ -3,11 +3,11 @@ const UserModel = require('./user');
 const ChildModel = require('./child');
 
 const sequelize = new Sequelize(
-  'paris_play', 
-  'root', 
-  'Th380rG3y388!', 
+  'u175pbutpnxsaehp', 
+  'i3p3q45ghq8by3mq', 
+  'udp9hmgbj7bwlebl', 
   {
-    host: 'localhost',
+    host: 'e764qqay0xlsc4cz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     dialect: 'mysql'
   }
 );
