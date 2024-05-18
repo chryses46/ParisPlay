@@ -16,18 +16,7 @@ async function ensureAuthenticated(req, res, next) {
         }]
       });
       // Attach the user to the request object
-      req.user = {
-        email: user.dataValues.email,
-        name: user.dataValues.name,
-        phone: user.dataValues.phone,
-        children: []
-      };
-      if(user.dataValues.children != null && user.dataValues.children.length > 0){
-        user.dataValues.children.forEach(child => {
-          req.user.children.push(child.dataValues);
-        });
-      };
-      
+      req.user = configRequestUser(user);
       next();
     } catch (error) {
       console.error('Error interacting with the database: ', error);
@@ -48,18 +37,7 @@ async function getIdentity(req, res, next) {
           as: 'children'
         }]
       });
-      req.user = {
-        email: user.dataValues.email,
-        name: user.dataValues.name,
-        phone: user.dataValues.phone,
-        children: []
-      };
-
-      if(user.dataValues.children != null && user.dataValues.children > 0){
-        user.dataValues.children.forEach(child => {
-          req.user.children.push(child.dataValues);
-        });
-      };
+      req.user = configRequestUser(user);
       next();
     } catch (error) {
       console.error('Error interacting with the database: ', error);
@@ -68,6 +46,23 @@ async function getIdentity(req, res, next) {
   else{
     next();
   }
+}
+
+function configRequestUser (dataUser){
+  let user = {
+    email: dataUser.dataValues.email,
+    name: dataUser.dataValues.name,
+    phone: dataUser.dataValues.phone,
+    children: []
+  };
+
+  if(dataUser.dataValues.children != null && dataUser.dataValues.children.length > 0){
+    dataUser.dataValues.children.forEach(child => {
+      user.children.push(child.dataValues);
+    });
+  };
+
+  return user;
 }
 
 function ensureRole(role) {

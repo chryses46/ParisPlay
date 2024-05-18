@@ -1,0 +1,31 @@
+CREATE TABLE `events` (
+  `uuid` CHAR(36) NOT NULL DEFAULT (UUID()),
+  `adult_name` VARCHAR(45) NOT NULL,
+  `adult_email` VARCHAR(45) NOT NULL,
+  `adult_phone` VARCHAR(45),
+  `event_type` VARCHAR(45),
+  `date` DATETIME,
+  `time` CHAR(5),
+  `guests` INT,
+  `chosen_child` INT,
+  `child_age` VARCHAR(45),
+  `kid_gender` VARCHAR(45),
+  `child_color` VARCHAR(45),
+  `theme` VARCHAR(45),
+  `tablecloth_color` VARCHAR(45),
+  `food` VARCHAR(45),
+  `invitations` BOOLEAN,
+  `field_trip_school_name` VARCHAR(45),
+  `field_trip_num_kids` INT,
+  `field_trip_num_teachers` INT,
+  `field_trip_age_range` INT,
+  `field_trip_date_range` BOOLEAN,
+  `comments` VARCHAR(255),
+  PRIMARY KEY (`uuid`)
+);
+
+ALTER TABLE `events`
+ADD CONSTRAINT `fk_user_email`
+FOREIGN KEY (`adult_email`) REFERENCES `users`(`email`);
+
+
