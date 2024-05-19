@@ -7,25 +7,22 @@ CREATE TABLE `events` (
   `date` DATETIME,
   `time` CHAR(5),
   `guests` INT,
-  `chosen_child` INT,
+  `chosen_child` VARCHAR(45),
   `child_age` VARCHAR(45),
   `kid_gender` VARCHAR(45),
   `child_color` VARCHAR(45),
   `theme` VARCHAR(45),
   `tablecloth_color` VARCHAR(45),
   `food` VARCHAR(45),
-  `invitations` BOOLEAN,
-  `field_trip_school_name` VARCHAR(45),
+  `invitations` VARCHAR(45),
+  `field_trip_school_name` VARCHAR(120),
   `field_trip_num_kids` INT,
   `field_trip_num_teachers` INT,
   `field_trip_age_range` INT,
-  `field_trip_date_range` BOOLEAN,
-  `comments` VARCHAR(255),
+  `field_trip_date_range` VARCHAR(45),
+  `comments` VARCHAR(250),
   PRIMARY KEY (`uuid`)
 );
 
-ALTER TABLE `events`
-ADD CONSTRAINT `fk_user_email`
-FOREIGN KEY (`adult_email`) REFERENCES `users`(`email`);
 
 

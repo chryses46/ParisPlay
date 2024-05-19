@@ -1,5 +1,3 @@
-//const { UUIDV4, STRING, DATE, INTEGER, BOOLEAN } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
     const Event = sequelize.define('Event', {
         uuid:{
@@ -95,17 +93,5 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'events',
         timestamps: false
     });
-  
-    Event.associate = function(models) {
-      Event.belongsTo(models.User, {
-        foreignKey: {
-          name: 'adult_email',
-          allowNull: true
-        },
-        targetKey: 'user_email',
-        as: 'user'
-      });
-    };
-  
     return Event;
 };

@@ -26,7 +26,6 @@ const config = {
     logout: false,
   },
 };
-// auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 app.get('/login', (req, res) =>
   res.oidc.login({
@@ -45,8 +44,6 @@ app.get('/logout', (req, res) =>
     },
   })
 );
-
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 

@@ -8,14 +8,12 @@ async function ensureAuthenticated(req, res, next) {
         defaults: {
           name: req.oidc.user.name,
           email: req.oidc.user.email
-          // Add other user information here
         },
         include: [{
           model: Child,
           as: 'children'
         }]
       });
-      // Attach the user to the request object
       req.user = configRequestUser(user);
       next();
     } catch (error) {

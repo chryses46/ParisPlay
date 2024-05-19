@@ -20,10 +20,8 @@ router.post('/update', async function(req, res, next) {
     });
 
     if (!user) {
-      return res.status(404).send('User not found'); // change to error message on profile screen
+      return res.status(404).send('User not found');
     }
-
-    // Update the user
     user.name = name || user.name;
     user.phone = phone || user.phone;
 
@@ -37,13 +35,9 @@ router.post('/update', async function(req, res, next) {
   
 router.post('/add-children', async function(req, res, next){
   try {
-    // Assuming req.body.children is an array of children
     const children = Array.isArray(req.body) ? req.body: [req.body];
-
-    // Loop over the children array
     for (let childData of children) {
       const { first_name, last_name, dob } = childData;
-      // Check if the child already exists
       const existingChild = await Child.findOne({
         where: { 
           user_uuid: req.user.uuid,
@@ -59,7 +53,6 @@ router.post('/add-children', async function(req, res, next){
         return res.status(400).send('Child already exists');
       }
 
-      // Create a new child
       const child = await Child.create({
         user_uuid: req.user.uuid,
         user_email: req.user.email,
@@ -93,13 +86,5 @@ router.delete('/:id', async function(req, res, next){
     console.error("Error deleting child: ", error)
     res.status(500).send('Error deleting child');
   }
-
-  
-
-  
-  
-  
 });
-
-
 module.exports = router;

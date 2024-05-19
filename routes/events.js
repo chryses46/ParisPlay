@@ -2,24 +2,16 @@ var express = require('express');
 const Joi = require('joi');
 var router = express.Router();
 const node_mailer = require('nodemailer');
-//works
+const { Event } = require('../models');
 let transporter = node_mailer.createTransport({
-    host: 'smtp-relay.brevo.com',
+    host: process.env.SMTP_HOST,
     port: 587,
-    secure: false, // true for 465, false for other ports
+    secure: false,
     auth: {
-        user: '750f0f001@smtp-brevo.com',
-        pass: 'qnC5Ox1DMQUGFmW9' // your Brevo password
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
     }
 });
-// cannot use- simple password issue
-// let transporter = node_mailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: 'parisplayptx@gmail.com',
-//         pass: 'PlayParasite2024!'
-//     }
-// });
 const event_schema = Joi.object({
     adult_name: Joi.string().max(45).required(),
     adult_email: Joi.string().email().max(45).required(),
@@ -53,46 +45,58 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/book', function (req, res, next) {
-    //parse form data
-    // return back if validation fails
-    const payload = event_schema.validate(req.body);
-    console.log(payload);
-
-    let mail_options = {
-        from: 'bookings@parisplay.kids',
-        to: 'parisplayptx@gmail.com',
-        subject: 'New Booking Request',
-        text: JSON.stringify(payload)
-    };
-
-    transporter.sendMail(mail_options, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
+router.post('/book', async function (req, res, next) {
+    const validation = event_schema.validate(req.body);
+    let payload = validation.value;
+    for (let key in payload) {
+        if (payload[key] === '') {
+            payload[key] = null;
         }
-    });
+    }
+    var event;
+    try{
+        event = await Event.create(payload);
 
-    let confirmation_options = {
-        from: 'bookings@parisplay.kids',
-        to: req.body.adult_email, 
-        subject: 'Paris Play Booking Confirmation',
-        text: 'We got your booking request and will reach out soon!'
-    };
-
-    transporter.sendMail(confirmation_options, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Confirmation email sent: ' + info.response);
+        if (event) {
+            console.debug(event);
+            let mail_options = {
+                from: 'bookings@parisplay.kids',
+                to: 'parisplayptx@gmail.com',
+                subject: 'New Booking Request',
+                text: JSON.stringify(payload)
+            };
+        
+            transporter.sendMail(mail_options, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+        
+            let confirmation_options = {
+                from: 'bookings@parisplay.kids',
+                to: req.body.adult_email, 
+                subject: 'Paris Play Booking Confirmation',
+                text: 'We got your booking request and will reach out soon!'
+            };
+        
+            transporter.sendMail(confirmation_options, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Confirmation email sent: ' + info.response);
+                }
+            });
+        
+            res.render('events', { 
+                title: 'Paris Play | Events',
+                user: req.user
+            });
         }
-    });
-
-    res.render('events', { 
-        title: 'Paris Play | Events',
-        user: req.user
-    });
+    }catch(error){
+        console.error(`Error while creating event: ${error}`);
+    }
 });
 
 module.exports = router;
