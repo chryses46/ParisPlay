@@ -28,7 +28,7 @@ const event_schema = Joi.object({
     date: Joi.date().allow(null,""),
     time: Joi.string().length(5).allow(null,""),
     guests: Joi.number().integer().allow(null,""),
-    chosen_child: Joi.number().integer().allow(null,""),
+    chosen_child: Joi.string().max(45).allow(null,""),
     child_age: Joi.string().max(45).allow(null,""),
     kid_gender: Joi.string().max(45).allow(null,""),
     child_color: Joi.string().max(45).allow(null,""),

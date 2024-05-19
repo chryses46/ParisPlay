@@ -1,3 +1,4 @@
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -13,32 +14,38 @@ var profileRouter = require('./routes/profile');
 var app = express();
 var { ensureAuthenticated, ensureRole, getIdentity } = require('./authMiddleware');
 const { auth } = require('express-openid-connect');
-
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: 'rhX1UthnUTRENT_iPXHRCRd6cJJVnBTWFJT2H-36VrVwEYUHQANvF_E26nxUbgNP', //move this to somewhere safe later
-  baseURL: 'https://paris-play-8aaa1bdd35b5.herokuapp.com',
-  clientID: 'YdKkcUZMTGygJqDAUb2ntYInLltPFaNV',
-  issuerBaseURL: 'https://dev-t8xahfjokzvnnmtq.us.auth0.com',
+  secret: process.env.AUTH_SECRET,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
   routes: {
     login: false,
-    postLogoutRedirect: 'https://paris-play-8aaa1bdd35b5.herokuapp.com',
+    logout: false,
   },
 };
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
-// req.isAuthenticated is provided from the auth router
 app.get('/login', (req, res) =>
   res.oidc.login({
     returnTo: '/profile',
     authorizationParams: {
-      redirect_uri: req.app.get('env') === 'development' ? 
-        'http://localhost:3000/callback' : 
-        "https://paris-play-8aaa1bdd35b5.herokuapp.com/callback"
+      redirect_uri: process.env.REDIRECT_URI_LOGIN
     },
   })
 );
+
+app.get('/logout', (req, res) =>
+  res.oidc.logout({
+    returnTo: '/',
+    authorizationParams: {
+      redirect_uri: process.env.REDIRECT_URI_LOGOUT
+    },
+  })
+);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

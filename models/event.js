@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
         },
         chosen_child: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(45),
             allowNull: true,
         },
         child_age: {

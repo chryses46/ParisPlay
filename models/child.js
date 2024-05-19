@@ -1,15 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
     const Child = sequelize.define('Child', {
-      user_email: {
-        type: DataTypes.STRING(45),
-        allowNull: false,
+      uuid:{
+        type: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
+      },
+      user_uuid: {
+        type: DataTypes.UUIDV4,
+        allowNull: false,
         references: {
           model: 'users', // name of the table, not the model
-          key: 'email'
+          key: 'uuid'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
+      },
+      user_email: {
+        type: DataTypes.STRING(45),
+        allowNull: false,
+        primaryKey: true
       },
       first_name: {
         type: DataTypes.STRING(45),
@@ -33,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
   
     Child.associate = function(models) {
       Child.belongsTo(models.User, {
-        foreignKey: 'user_email',
+        foreignKey: 'user_uuid',
         as: 'user'
       });
     };

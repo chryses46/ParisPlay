@@ -25,21 +25,25 @@ block content
             th First Name
             th Last Name
             th Birthday
+            th Delete
         tbody
           each child, i in user.children
             tr
               td= child.first_name
               td= child.last_name
               td= child.dob
+              td
+                button.btn.btn-danger(type='button' onclick=`deleteChild('${child.uuid}')`)
+                  .trash-icon 🗑
   .container 
     button#addChildButton.btn(type='button') Add Child +
     form#addChildForm(action='/profile/add-children' method='POST' style='display: none;')
         .form-group
-            label(for='first_name') First Name
-            input#first_name.form-control(type='text' name='first_name' value='First name')
+            //label(for='first_name')
+            input#first_name.form-control(type='text' name='first_name' placeholder="First Name")
         .form-group
-            label(for='last_name') Last Name
-            input#last_name.form-control(type='text' name='last_name' value='Last name')
+            //label(for='last_name')
+            input#last_name.form-control(type='text' name='last_name' placeholder='Last Name')
         .form-group
             label(for='dob') Birthday
             input#dob.form-control(type='date' name='dob' value='Birthday')
@@ -53,3 +57,10 @@ block content
         document.getElementById('addChildForm').style.display = status =='block' ? 'none' : 'block';
         this.innerHTML = status =='block' ? 'Add Child +': 'Close';
     });
+    function deleteChild(id) {
+      fetch(
+        `/profile/${id}`, 
+        { method: 'DELETE' }
+      ).then(() => window.location.reload());
+    }
+

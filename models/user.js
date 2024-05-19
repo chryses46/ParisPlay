@@ -1,10 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
+      uuid:{
+        type: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
       email: {
         type: DataTypes.STRING(45),
-    allowNull: false,
-    primaryKey: true,
-    unique: true
+        allowNull: false,
+        primaryKey: true,
+        unique: true
       },
       name: {
         type: DataTypes.STRING(45),
@@ -21,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     
     User.associate = function(models) {
       User.hasMany(models.Child, {
-        foreignKey: 'user_email',
+        foreignKey: 'user_uuid',
         as: 'children'
       });
     };

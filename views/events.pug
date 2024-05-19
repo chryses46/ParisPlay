@@ -37,7 +37,11 @@ block content
                         label.col(for='chosen_child') Choose a Child
                         select.col.form-control(name='chosen_child' id='chosen_child')
                             each child, index in user.children
-                                option(value=index) #{child.first_name}
+                                option(value=child.first_name) #{child.first_name}
+                else 
+                    .form-group.row
+                        label.col(for='chosen_child') *Child's Name: 
+                        input.col.form-control(type='text' name='chosen_child' id='chosen_child' oninput='validateInputLength(this, 45, "Child\'s Name")')
                 div.form-group.row
                     label.col(for='child_age') *Child's Birthday:
                     input.col.form-control(type='date' name='child_age' id='child_age' max=new Date().toISOString().split('T')[0] min=new Date(new Date().setFullYear(new Date().getFullYear() - 100)).toISOString().split('T')[0] required)

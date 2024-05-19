@@ -50,6 +50,7 @@ async function getIdentity(req, res, next) {
 
 function configRequestUser (dataUser){
   let user = {
+    uuid: dataUser.dataValues.uuid,
     email: dataUser.dataValues.email,
     name: dataUser.dataValues.name,
     phone: dataUser.dataValues.phone,
