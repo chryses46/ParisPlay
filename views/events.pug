@@ -112,8 +112,7 @@ block content
                     textarea.col.form-control(name='comments' id='comments' oninput='validateInputLength(this, 250, "Comments")')
                 div
                     p#comments_error_message(style='color:red;')
-            div.form-group.row
-                button.col-3.btn.btn-primary(type='submit' id='submit_button') Book Now!          
+            button.col-3.btn.action-button(type='submit' id='submit_button') Book Now!          
     script.
         var user = !{JSON.stringify(user)};
         document.addEventListener('DOMContentLoaded', function() {

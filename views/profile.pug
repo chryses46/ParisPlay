@@ -15,10 +15,11 @@ block content
       .form-group
         label(for='phone') Phone
         input#phone.form-control(type='phone' name='phone' value=user.phone)
-      button.btn.btn-primary(type='submit') Save
-  if user.children
-    .container 
-      h2 My Children
+      button.btn.action-button(type='submit') Update
+  hr
+  .container 
+    h2.subtitle My Children
+    if user.children.length > 0
       table.table.table-responsive.wrap-text
         thead
           tr
@@ -36,7 +37,7 @@ block content
                 button.btn.btn-danger(type='button' onclick=`deleteChild('${child.uuid}')`)
                   .trash-icon 🗑
   .container 
-    button#addChildButton.btn(type='button') Add Child +
+    button#addChildButton.btn.action-button(type='button') Add Child +
     form#addChildForm(action='/profile/add-children' method='POST' style='display: none;')
         .form-group
             //label(for='first_name')
@@ -48,8 +49,9 @@ block content
             label(for='dob') Birthday
             input#dob.form-control(type='date' name='dob' value='Birthday')
         button.btn.btn-primary(type='submit') Submit
+  hr
   .container 
-    a.btn.mx-auto(type='button' href='/logout') Logout
+    a.btn.action-button.mx-auto(type='button' href='/logout') Logout
   
   script.
     document.getElementById('addChildButton').addEventListener('click', function() {
