@@ -17,6 +17,10 @@ a {
 .page-title-container{
     margin-top: 3em;
 }
+.slogan {
+  color:cadetblue;
+  font-style: italic;
+}
 .subtitle {
     font-size: 4em;
     text-align: center;
