@@ -1,0 +1,42 @@
+extends layout 
+
+block content 
+    .container.page-title-container
+        h1.page-title #{resource_title}
+    hr
+    .container 
+        a(type='button' href=`/admin/add/${resource_title}`) Add #{resource_title} +
+    .container 
+        if resource_list.length > 0
+            table.table.table-responsive.wrap-text
+                thead
+                    tr
+                        each val, key in resource_list[0]
+                            th= key
+                        th(colspan='2') Actions
+                tbody
+                    each resource, i in resource_list
+                        tr
+                            each val, key in resource
+                                td= val
+                            
+                                
+                            td
+                                button.btn.btn-warning(type='button' onclick=`editResource('${resource.uuid}')`)
+                                    .crayon &#128397;
+                            td
+                                button.btn.btn-danger(type='button' onclick=`deleteResource('${resource.uuid}')`)
+                                    .trash-icon 🗑
+
+    script.
+        document.getElementById('addButton').addEventListener('click', function() {
+            var status = document.getElementById('addForm').style.display;
+            document.getElementById('addForm').style.display = status =='block' ? 'none' : 'block';
+            this.innerHTML = status =='block' ? 'Add Child +': 'Close';
+        });
+        function deleteChild(id) {
+        fetch(
+            `/profile/${id}`, 
+            { method: 'DELETE' }
+        ).then(() => window.location.reload());
+        }

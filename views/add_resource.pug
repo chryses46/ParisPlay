@@ -1,0 +1,20 @@
+extends layout
+
+block content 
+    .container.page-title-container
+        h1.page-title Add #{resource_title}
+    hr
+    .container 
+        if resource_model
+            
+            form#resourceForm(action=`/admin/new/${resource_title}` method='POST')
+                console.log(resource_model)
+                each value, name in resource_model
+                    .form-group
+                        label(for=name) #{name.charAt(0).toUpperCase() + name.slice(1)}
+                        input.form-control(type='text' name=name required)
+                button.btn.btn-primary(type='submit') Submit
+        else
+            p No resource model found.
+
+

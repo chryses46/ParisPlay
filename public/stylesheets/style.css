@@ -45,6 +45,7 @@ footer div a btn-primary{
   background-color: none;
   border-color: none;
 }
+/*About Page*/
 .about-info{
   font-size: 2em;
 }
@@ -60,6 +61,12 @@ footer div a btn-primary{
 }
 .wrap-text {
   word-wrap: break-word;
+}
+
+/*My Profile Page*/
+.member > ol > li {
+  list-style-image: url('/images/icons/star-fill.svg');
+  text-align: left;
 }
 
 img {

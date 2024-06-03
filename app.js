@@ -11,8 +11,9 @@ var aboutRouter = require('./routes/about');
 var mediaRouter = require('./routes/media');
 var privacyRouter = require('./routes/privacy');
 var profileRouter = require('./routes/profile');
+var adminRouter = require('./routes/admin');
 var app = express();
-var { ensureAuthenticated, ensureRole, getIdentity } = require('./authMiddleware');
+var { ensureAuthenticated, adminOnly, getIdentity } = require('./authMiddleware');
 const { auth } = require('express-openid-connect');
 const config = {
   authRequired: false,
@@ -55,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/events', getIdentity, eventsRouter);
+app.use('/admin', ensureAuthenticated, adminOnly, adminRouter);
 app.use('/about', aboutRouter);
 app.use('/media', mediaRouter);
 app.use('/privacy', privacyRouter);

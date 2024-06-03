@@ -1,4 +1,4 @@
-const { User, Child } = require('./models');
+const { User, Child, Membership } = require('./models');
 
 async function ensureAuthenticated(req, res, next) {
   if (req.oidc.isAuthenticated()) {
@@ -12,8 +12,16 @@ async function ensureAuthenticated(req, res, next) {
         include: [{
           model: Child,
           as: 'children'
+        },
+        {
+          model: Membership,
+          as: 'membership'
         }]
       });
+      let hasAdminRole = ensureRole(process.env.AUTH0_ROLE911, req.oidc.user);
+      if (hasAdminRole) {
+        //console.debug(`Has Admin role. Can access Admin page.`);
+      }
       req.user = configRequestUser(user);
       next();
     } catch (error) {
@@ -35,6 +43,7 @@ async function getIdentity(req, res, next) {
           as: 'children'
         }]
       });
+      
       req.user = configRequestUser(user);
       next();
     } catch (error) {
@@ -52,7 +61,7 @@ function configRequestUser (dataUser){
     email: dataUser.dataValues.email,
     name: dataUser.dataValues.name,
     phone: dataUser.dataValues.phone,
-    children: []
+    children: [],
   };
 
   if(dataUser.dataValues.children != null && dataUser.dataValues.children.length > 0){
@@ -61,22 +70,35 @@ function configRequestUser (dataUser){
     });
   };
 
+  if (user.membership && user.membership.num_visits == 0) {
+    user.membership.num_visits = 'unlimited';
+  }
+
   return user;
 }
 
-function ensureRole(role) {
-  return function(req, res, next) {
-    const user = req.oidc.user;
-    if (user && user[`${process.env.AUTH0_AUDIENCE}/roles`].includes(role)) {
-      next();
-    } else {
-      res.status(403).send('Forbidden');
-    }
+function ensureRole(role, oidc_user) {
+  //console.debug(`ensureRole: ${role}`);
+  const user = oidc_user;
+  if (user && user[`${process.env.AUTH0_AUDIENCE}/roles`].includes(role)) {
+    console.debug(`user is an admin in auth0: ${user[`${process.env.AUTH0_AUDIENCE}/roles`]}`);
+    return true;
+  } 
+  return false
+}
+
+async function adminOnly(req, res, next){
+  const user = req.oidc.user;
+  if (user && user[`${process.env.AUTH0_AUDIENCE}/roles`].includes(process.env.AUTH0_ROLE911)) {
+    next();
+  }else{
+    res.status(403).send('Forbidden');
   }
 }
 
 module.exports = {
   ensureAuthenticated,
   getIdentity,
-  ensureRole
+  ensureRole,
+  adminOnly
 };

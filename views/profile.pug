@@ -41,15 +41,26 @@ block content
     form#addChildForm(action='/profile/add-children' method='POST' style='display: none;')
         .form-group
             //label(for='first_name')
-            input#first_name.form-control(type='text' name='first_name' placeholder="First Name")
+            input#first_name.form-control(type='text' name='first_name' placeholder="First Name" required)
         .form-group
             //label(for='last_name')
-            input#last_name.form-control(type='text' name='last_name' placeholder='Last Name')
+            input#last_name.form-control(type='text' name='last_name' placeholder='Last Name' required)
         .form-group
             label(for='dob') Birthday
-            input#dob.form-control(type='date' name='dob' value='Birthday')
+            input#dob.form-control(type='date' name='dob' value='Birthday' required)
         button.btn.btn-primary(type='submit') Submit
   hr
+  .container.member 
+    if user.membership
+      h2.subtitle My Membership
+      ol
+        li #{user.membership.type}
+        li Covers #{user.membership.num_children} children 
+        li Includes #{user.membership.num_visits} visits
+        li $#{user.membership.cost} monthly 
+        li #{user.membership.discount}% off snacks, birthday bookings, and toys
+      p x days until next billling
+    
   .container 
     a.btn.action-button.mx-auto(type='button' href='/logout') Logout
   

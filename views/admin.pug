@@ -1,0 +1,17 @@
+extends layout
+block content
+    .container.page-title-container
+        h1.page-title Admin
+        h2= user.name
+    .container 
+        a(href='/admin/User')
+            h2 Users 
+    .container
+        a(href='/admin/Child')
+            h2 Children 
+    .container
+        a(href='/admin/Event')
+            h2 Events 
+    .container  
+        a(href='/admin/Membership')
+            h2 Memberships

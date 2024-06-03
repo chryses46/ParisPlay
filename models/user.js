@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       phone: {
         type: DataTypes.STRING(45),
         allowNull: true
+      },
+      member: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
       }
     }, {
       tableName: 'users',
@@ -28,6 +32,11 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Child, {
         foreignKey: 'user_uuid',
         as: 'children'
+      });
+      
+      User.hasMany(models.Membership, {
+        foreignKey: 'user_uuid',
+        as: 'membership'
       });
     };
     
