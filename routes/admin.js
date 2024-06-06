@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const { sequelize } = require('../models'); // Make sure to import the sequelize instance
 const models = require('../models'); // Import all models
 
 const resource_type_plurals = {
@@ -14,6 +13,17 @@ function getKeyByValue(object, value) {
 }
 
 router.get('/', function(req, res, next) {
+
+    if (!req.user) { // for local only testing
+        req.user = {
+            uuid: '0ac43715-da1b-4a73-9761-aed9bf46b43b',
+            email: 'danjfrank08@gmail.com',
+            name: 'Daniel TEST',
+            phone: '214-534-7738',
+            children: [],
+              
+        }
+    }
     res.render('admin', { 
       title: 'Paris Play | Admin', 
       user: req.user
@@ -22,15 +32,24 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/add/:resource', function(req, res, next){
-    const resource_name =  getKeyByValue(resource_type_plurals, req.params.resource);
+    const resource_name = getKeyByValue(resource_type_plurals, req.params.resource);
     const ResourceModel = models[resource_name];
-    console.log(`ResourceModel: `, ResourceModel);
-    res.render('add_resource',{
-        title: `Paris Play | Add ${resource_name}`,
-        resource_title: resource_name,
-        resource_model: ResourceModel, 
-    })
-})
+    const attributes = Object.keys(ResourceModel.rawAttributes).map(key => {
+      const attribute = ResourceModel.rawAttributes[key];
+      return {
+        name: key,
+        type: attribute.type.key,
+        allowNull: attribute.allowNull
+      };
+    });
+  
+    res.render('add_resource', {
+      title: `Paris Play | Add ${resource_name}`,
+      resource_title: resource_name,
+      resource_attributes: attributes
+    });
+  });
+  
 
 router.get('/:resource', async function (req, res, next) {
     const resource_name = req.params.resource;
@@ -41,7 +60,6 @@ router.get('/:resource', async function (req, res, next) {
 
     try {
         const resources = await ResourceModel.findAll();
-
         let resource_list = resources.map((resource)=>{
             return resource.dataValues;
         });

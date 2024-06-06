@@ -1,20 +1,36 @@
 extends layout
 
 block content 
-    .container.page-title-container
-        h1.page-title Add #{resource_title}
-    hr
-    .container 
-        if resource_model
-            
-            form#resourceForm(action=`/admin/new/${resource_title}` method='POST')
-                console.log(resource_model)
-                each value, name in resource_model
-                    .form-group
-                        label(for=name) #{name.charAt(0).toUpperCase() + name.slice(1)}
-                        input.form-control(type='text' name=name required)
-                button.btn.btn-primary(type='submit') Submit
-        else
-            p No resource model found.
+  .container.page-title-container
+    h1.page-title Add #{resource_title}
+  hr
+  .container 
+    if resource_attributes
+      form#resourceForm(action=`/admin/new/${resource_title}` method='POST')
+        each attr in resource_attributes
+          .form-group
+            case attr.type
+              when 'UUID'
+                //nothing
+              when 'STRING'
+                label(for=attr.name) #{attr.name.charAt(0).toUpperCase() + attr.name.slice(1)}
+                input.form-control(type='text' name=attr.name required=!attr.allowNull)
+              when 'BOOLEAN'
+                label(for=attr.name) #{attr.name.charAt(0).toUpperCase() + attr.name.slice(1)}
+                select.form-control(name=attr.name required=!attr.allowNull)
+                  option(value='true') True
+                  option(value='false') False
+              when 'DATE'
+                label(for=attr.name) #{attr.name.charAt(0).toUpperCase() + attr.name.slice(1)}
+                input.col.form-control(type='date' name='date' id='date' min=new Date().toISOString().split('T')[0] max=new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString().split('T')[0] required)
+              when 'INTEGER'
+                label(for=attr.name) #{attr.name.charAt(0).toUpperCase() + attr.name.slice(1)}
+                input.col.form-control(type='number' name=attr.name id=attr.name min='0' max='30' required)
+
+              // Add other cases for different data types as needed
+        button.btn.btn-primary(type='submit') Submit
+    else
+      p No resource attributes found.
+
 
 
