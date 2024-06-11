@@ -3,6 +3,7 @@ const Joi = require('joi');
 var router = express.Router();
 const node_mailer = require('nodemailer');
 const { Event } = require('../models');
+const {generateEmailTable} = require('../utils/email');
 let transporter = node_mailer.createTransport({
     host: process.env.SMTP_HOST,
     port: 587,
@@ -63,9 +64,8 @@ router.post('/book', async function (req, res, next) {
                 from: 'bookings@parisplay.kids',
                 to: 'parisplayptx@gmail.com',
                 subject: 'New Booking Request',
-                text: JSON.stringify(payload)
+                text: generateEmailTable(payload)
             };
-        
             transporter.sendMail(mail_options, function(error, info){
                 if (error) {
                     console.log(error);
