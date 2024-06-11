@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/events', getIdentity, eventsRouter);
-app.use('/admin', /*ensureAuthenticated, adminOnly,*/ adminRouter);
+app.use('/admin', ensureAuthenticated, adminOnly, adminRouter);
 app.use('/about', aboutRouter);
 app.use('/media', mediaRouter);
 app.use('/privacy', privacyRouter);

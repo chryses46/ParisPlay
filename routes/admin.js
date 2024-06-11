@@ -14,16 +14,16 @@ function getKeyByValue(object, value) {
 
 router.get('/', function(req, res, next) {
 
-    if (!req.user) { // for local only testing
-        req.user = {
-            uuid: '0ac43715-da1b-4a73-9761-aed9bf46b43b',
-            email: 'danjfrank08@gmail.com',
-            name: 'Daniel TEST',
-            phone: '214-534-7738',
-            children: [],
+    // if (!req.user) { // for local only testing
+    //     req.user = {
+    //         uuid: '0ac43715-da1b-4a73-9761-aed9bf46b43b',
+    //         email: 'danjfrank08@gmail.com',
+    //         name: 'Daniel TEST',
+    //         phone: '214-534-7738',
+    //         children: [],
               
-        }
-    }
+    //     }
+    // }
     res.render('admin', { 
       title: 'Paris Play | Admin', 
       user: req.user
