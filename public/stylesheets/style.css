@@ -68,7 +68,6 @@ footer div a btn-primary{
   list-style-image: url('/images/icons/star-fill.svg');
   text-align: left;
 }
-
 img {
   width: 100%;
   height: auto;
@@ -79,6 +78,7 @@ img {
     font: 22px serif;
   }
 }
+
 @media only screen and (max-width: 500px) {
   body{
     font: 14px serif;
@@ -86,7 +86,6 @@ img {
   .page-title{
     font-size: 2em;
   }
-
   .subtitle {
     font-size: 2em;
   }
@@ -98,25 +97,20 @@ img {
     width: 100%;
     height: auto;
   }
-
   h2 {
     font-size: 1rem;
   }
-
   footer div a svg {
     width: 2em;
     height: 2rem;
   }
-
   .about-info{
     font-size: 1em;
   }
-
   .about-info svg{
     width: 2rem;
     height: 2rem;
   }
-
   .fb-view{
     padding:0;
   }
