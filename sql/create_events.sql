@@ -24,5 +24,6 @@ CREATE TABLE `events` (
   PRIMARY KEY (`uuid`)
 );
 
+ALTER TABLE `events`(
 
-
+)

@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(45),
             allowNull: true,
         },
-        kid_gender: {
+        child_gender: {
             type: DataTypes.STRING(45),
             allowNull: true,
         },
@@ -49,7 +49,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(45),
             allowNull: true,
         },
-        theme: {
+        party_type: {
+            type: DataTypes.STRING(45),
+            allowNull: true,
+        },
+        add_on: {
+            type: DataTypes.STRING(45),
+            allowNull: true,
+        },
+        decoration_theme: {
             type: DataTypes.STRING(45),
             allowNull: true,
         },

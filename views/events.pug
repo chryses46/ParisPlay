@@ -46,45 +46,62 @@ block content
                     label.col(for='child_age') *Child's Birthday:
                     input.col.form-control(type='date' name='child_age' id='child_age' max=new Date().toISOString().split('T')[0] min=new Date(new Date().setFullYear(new Date().getFullYear() - 100)).toISOString().split('T')[0] required)
                 div.form-group.row
-                    label.col(for='kid_gender') *Child's Gender:
-                    select.col.form-control(name='kid_gender' id='kid_gender')
+                    label.col(for='child_gender') *Child's Gender:
+                    select.col.form-control(name='child_gender' id='child_gender')
                         option(value='') -
                         option(value='male') Male
                         option(value='female') Female
                 div.form-group.row
-                    label.col(for='child_color') *Child's Favorite Color:
+                    label.col(for='child_color') *Child's Favorite Color (Tablecloth):
                     input.col.form-control(type='text' name='child_color' id='child_color')
                 div.form-group.row
-                    label.col(for='theme') *Do you want a custom theme?
-                    select.col.form-control(name='theme' id='theme' required)
+                    label.col(for='party_type') *Party Type?
+                    select.col.form-control(name='party_type' id='party_type' required)
                         option(value='') Choose one
-                        option(value='true') Yes
-                        option(value='false') No
+                        option(value='1hr Private Party Room') 1hr Party Room
+                        option(value='2hr Private Party Room') 2hr Party Room
+                        option(value='Private Play') Private Play Party
                 div.form-group.row
-                    label.col(for='tablecloth_color') *Tablecloth Color:
-                    select.col.form-control(name='tablecloth_color' id='tablecloth_color' )
+                    label.col(for='add_on') Cleanup or Decorations?
+                    select.col.form-control(name='add_on' id='add_on' required)
                         option(value='') Choose one
-                        option(value='red') Red
-                        option(value='orange') Orange
-                        option(value='yellow') Yellow
-                        option(value='green') Green
-                        option(value='blue') Blue
-                        option(value='purple') Purple
-                        option(value='pink') Pink
-                        option(value='black') Black
+                        option(value='cleanup') Cleanup
+                        option(value='decorations') Decorations + Cleanup
                 div.form-group.row
-                    label.col(for='food') *Will you bring food?
-                    select.col.form-control(name='food' id='food')
+                    label.col(for='decoration_theme') Decoration Theme?
+                    select.col.form-control(name='decoration_theme' id='decoration_theme' required)
                         option(value='') Choose one
-                        option(value='true') Yes I will
-                        option(value='false') No I will not
-                        option(value='provide') Provide me food!
-                div.form-group.row
-                    label.col(for='invitations') *Should we make and send invitations for you?
-                    select.col.form-control(name='invitations' id='invitations')
-                        option(value='') Choose one
-                        option(value='true') Yes!
-                        option(value='false') No, thank you
+                        option(value='dinosaur') Dinosaurs
+                        option(value='unicorn') Unicorn
+                        option(value='space') Space
+                        option(value='construction') Construction
+                        option(value='other') Other - Add in comments
+                //- div.form-group.row
+                //-     label.col(for='tablecloth_color') *Tablecloth Color:
+                //-     select.col.form-control(name='tablecloth_color' id='tablecloth_color' )
+                //-         option(value='') Choose one
+                //-         option(value='rainbow') Rainbow
+                //-         option(value='red') Red
+                //-         option(value='orange') Orange
+                //-         option(value='yellow') Yellow
+                //-         option(value='green') Green
+                //-         option(value='blue') Blue
+                //-         option(value='purple') Purple
+                //-         option(value='pink') Pink
+                //-         option(value='black') Black
+                //- div.form-group.row
+                //-     label.col(for='food') *Will you bring food?
+                //-     select.col.form-control(name='food' id='food')
+                //-         option(value='') Choose one
+                //-         option(value='will bring food') Yes I will
+                //-         option(value='will not bring food') No I will not
+                //-         option(value='provide me food') Provide me food!
+                //- div.form-group.row
+                //-     label.col(for='invitations') *Should we make and send invitations for you?
+                //-     select.col.form-control(name='invitations' id='invitations')
+                //-         option(value='') Choose one
+                //-         option(value='yes') Yes!
+                //-         option(value='no') No, thank you
             div#field_trip_fields(style='display:none;')
                 div.form-group.row
                     label.col(for='field_trip_school_name') *School Name:
@@ -126,6 +143,7 @@ block content
             var timeInput = document.getElementById('time');
             var dateInput = document.getElementById('date');
             var eventForm = document.getElementById('event_form');
+            var addOn = document.getElementById('add_on');
             var birthdayInputs = birthdayFields.querySelectorAll('input');
             var field_groups = {
                 'birthday': {
@@ -188,6 +206,16 @@ block content
                     childAgeInput.value = age;
                 });
             };
+            //- addOn.addEventListener('change', function(){
+            //-     var selectedAddOn = addOn.value;
+            //-     switch(selectedAddOn){
+
+            //-         'decorations':
+            //-             break;
+            //-         default:
+            //-             break;
+            //-     }
+            //- });
 
             dateInput.addEventListener('change', function() {
                 var dayOfWeek = new Date(dateInput.value).getDay();
