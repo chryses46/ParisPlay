@@ -21,5 +21,6 @@ CREATE TABLE `events` (
   `field_trip_age_range` INT,
   `field_trip_date_range` VARCHAR(45),
   `comments` VARCHAR(250),
+  'paid' BOOLEAN,
   PRIMARY KEY (`uuid`)
 );

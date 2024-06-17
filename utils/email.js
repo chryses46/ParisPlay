@@ -36,7 +36,7 @@ function generateEmailTable(payload) {
         time: 'Time',
         guests: 'Number of Guests',
         chosen_child: 'Chosen Child',
-        child_birthday: 'Child\'s Age',
+        child_birthday: 'Child\'s Birthdate',
         child_gender: 'Child\'s Gender',
         child_color: 'Favorite Color',
         party_type: 'Party Type',

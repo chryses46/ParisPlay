@@ -28,9 +28,6 @@ block content
                 div.form-group.row
                     label.col(for='time') *Time:
                     input.col.form-control(type='time' name='time' id='time' required)
-                div.form-group.row
-                    label.col(for='guests') *Number of Guests:
-                    input.col.form-control(type='number' name='guests' id='guests' min='0' max='30' required)
             div#birthday_fields(style='display:none;')
                 if  user && user.children != null && user.children.length > 0 
                     .form-group.row 
@@ -63,14 +60,14 @@ block content
                         option(value='Private Play') Private Play Party
                 div.form-group.row
                     label.col(for='add_on') Cleanup or Decorations?
-                    select.col.form-control(name='add_on' id='add_on' required)
-                        option(value='') Choose one
+                    select.col.form-control(name='add_on' id='add_on')
+                        option(value='none') None
                         option(value='cleanup') Cleanup
                         option(value='decorations') Decorations + Cleanup
                 div.form-group.row
                     label.col(for='decoration_theme') Decoration Theme?
-                    select.col.form-control(name='decoration_theme' id='decoration_theme' required)
-                        option(value='') Choose one
+                    select.col.form-control(name='decoration_theme' id='decoration_theme')
+                        option(value='none') None
                         option(value='dinosaur') Dinosaurs
                         option(value='unicorn') Unicorn
                         option(value='space') Space
@@ -185,9 +182,9 @@ block content
                             field.inputs.forEach(function(input) {
                                 input.required = true;
                             });
-                            field.selects.forEach(function(input) {
-                                input.required = true;
-                            });
+                            //- field.selects.forEach(function(input) {
+                            //-     input.required = true;
+                            //- });
                         } else {
                             // Hide the field_groups for all other event types
                             field.element.style.display = 'none';
