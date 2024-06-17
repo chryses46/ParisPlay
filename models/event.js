@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(45),
             allowNull: true,
         },
-        child_age: {
+        child_birthday: {
             type: DataTypes.STRING(45),
             allowNull: true,
         },

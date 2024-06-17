@@ -72,7 +72,6 @@ router.post('/book', async function (req, res, next) {
         event = await Event.create(payload);
 
         if (event) {
-            console.debug(event);
             let mail_options = {
                 from: 'bookings@parisplay.kids',
                 to: 'parisplayptx@gmail.com',
@@ -102,14 +101,11 @@ router.post('/book', async function (req, res, next) {
                 }
             });
         
-            res.render('events', { 
-                title: 'Paris Play | Events',
-                user: req.user
-            });
+            res.redirect('/events');
         }
     }catch(error){
         console.error(`Error while creating event: ${error}`);
     }
-});
+})
 
 module.exports = router;

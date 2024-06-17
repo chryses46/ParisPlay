@@ -23,7 +23,7 @@ block content
                     option(value='other') Other
             div#general_fields(style='display:none;')
                 div.form-group.row
-                    label.col(for='date') *Day:
+                    label.col(for='date') *Preferred Date:
                     input.col.form-control(type='date' name='date' id='date' min=new Date().toISOString().split('T')[0] max=new Date(new Date().setFullYear(new Date().getFullYear() + 2)).toISOString().split('T')[0] required)
                 div.form-group.row
                     label.col(for='time') *Time:
@@ -43,8 +43,8 @@ block content
                         label.col(for='chosen_child') *Child's Name: 
                         input.col.form-control(type='text' name='chosen_child' id='chosen_child' oninput='validateInputLength(this, 45, "Child\'s Name")')
                 div.form-group.row
-                    label.col(for='child_age') *Child's Birthday:
-                    input.col.form-control(type='date' name='child_age' id='child_age' max=new Date().toISOString().split('T')[0] min=new Date(new Date().setFullYear(new Date().getFullYear() - 100)).toISOString().split('T')[0] required)
+                    label.col(for='child_birthday') *Child's Birthdate:
+                    input.col.form-control(type='text' name='child_birthday' id='child_birthday' pattern='\\d{2}/\\d{2}/\\d{4}' placeholder='mm/dd/yyyy' required)
                 div.form-group.row
                     label.col(for='child_gender') *Child's Gender:
                     select.col.form-control(name='child_gender' id='child_gender')
@@ -133,8 +133,13 @@ block content
     script.
         var user = !{JSON.stringify(user)};
         document.addEventListener('DOMContentLoaded', function() {
+            const mon_friday_start = '10:00',
+                mon_friday_end = '16:00',
+                sat_sunday_start = '09:00',
+                sat_sunday_end = '18:00';
+
             var chosenChildSelect = user != null ? document.getElementById('chosen_child') : null;
-            var childAgeInput = document.getElementById('child_age');
+            var childBirthdayInput = document.getElementById('child_birthday');
             var eventTypeSelect = document.getElementById('event_type');
             var generalFields = document.getElementById('general_fields');
             var birthdayFields = document.getElementById('birthday_fields');
@@ -202,8 +207,8 @@ block content
             if (chosenChildSelect){
                 chosenChildSelect.addEventListener('change', function() {
                     var chosenChild = user.children[chosenChildSelect.value];
-                    var age = Math.floor((new Date() - new Date(chosenChild.dob)) / (365.25 * 24 * 60 * 60 * 1000));
-                    childAgeInput.value = age;
+                    //- var age = Math.floor((new Date() - new Date(chosenChild.dob)) / (365.25 * 24 * 60 * 60 * 1000));
+                    //- childAgeInput.value = age;
                 });
             };
             //- addOn.addEventListener('change', function(){
@@ -220,7 +225,7 @@ block content
             dateInput.addEventListener('change', function() {
                 var dayOfWeek = new Date(dateInput.value).getDay();
                 if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Monday to Friday
-                    timeInput.min = '10:00';
+                    timeInput.min = mon_friday_start;
                     timeInput.max = '16:00';
                 } else { // Saturday and Sunday
                     timeInput.min = '09:00';

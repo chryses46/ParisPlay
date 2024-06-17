@@ -8,8 +8,8 @@ CREATE TABLE `events` (
   `time` CHAR(5),
   `guests` INT,
   `chosen_child` VARCHAR(45),
-  `child_age` VARCHAR(45),
-  `kid_gender` VARCHAR(45),
+  `child_birthday` VARCHAR(45),
+  `child_gender` VARCHAR(45),
   `child_color` VARCHAR(45),
   `theme` VARCHAR(45),
   `tablecloth_color` VARCHAR(45),
@@ -23,7 +23,3 @@ CREATE TABLE `events` (
   `comments` VARCHAR(250),
   PRIMARY KEY (`uuid`)
 );
-
-ALTER TABLE `events`(
-
-)
