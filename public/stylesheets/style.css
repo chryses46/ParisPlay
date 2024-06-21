@@ -9,6 +9,9 @@ a {
 .btn.action-button {
   background-color: greenyellow;
 }
+.btn.action-button > h2{
+  margin: 0;
+}
 .page-title{
     font-size: 4em;
     text-align: center;
@@ -40,7 +43,6 @@ footer div a svg {
   width: 4rem;
   height: 4rem;
 }
-
 footer div a btn-primary{
   background-color: none;
   border-color: none;
@@ -62,7 +64,6 @@ footer div a btn-primary{
 .wrap-text {
   word-wrap: break-word;
 }
-
 /*My Profile Page*/
 .member > ol > li {
   list-style-image: url('/images/icons/star-fill.svg');
@@ -74,28 +75,24 @@ img {
 }
 
 @media only screen and (min-width: 768px) {
-  
   .col {
     height: 5em;
   }
-
   h2 {
     font-size: medium;
   }
   .subtitle {
     font-size: larger;
   }
-  
   img {
     width: 100%;
     height: auto;
   }
-}
-@media only screen and (min-width: 768px) {
-  h2 {
-    font-size: large;
+  .index-title{
+    width: 50%;
   }
 }
+
 @media only screen and (max-width: 850px) {
   body{
     font: 22px serif;
@@ -138,4 +135,3 @@ img {
     padding:0;
   }
 }
-
