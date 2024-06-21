@@ -4,15 +4,17 @@ block content
   .container
     .row
       .col-md-12
-        img(src='/images/logo_nobg.png' alt='logo image' style='max-width: 100%; height: auto; text-align:center')
+        img.index-title(src='/images/logo_nobg.png' alt='logo image' style='max-width: 100%; height: auto; text-align:center')
         h2.slogan indoor children's playplace in Paris, TX
+        h2 
+          a(href='https://maps.app.goo.gl/QjYMd8tCUiMcw2yy8' target='blank') 120 27th St. NE, Ste 200 Paris, Texas 75460
+        a.btn.action-button(href='/events') 
+          h2 Book your party here!     
   br
   .container
     .row
       .col-md-3
-        h2 
-          a(href='https://maps.app.goo.gl/QjYMd8tCUiMcw2yy8' target='blank') 120 27th St. NE, Ste 200 Paris, Texas 75460
-        h2 Weekly Hours
+       h2 Weekly Hours
         h2 Monday: 10am - 5pm
         h2 Tuesday: 10:30am - 7pm
         h2 Wednesday: 10am - 7pm
@@ -22,9 +24,7 @@ block content
         h2 Sunday: 12pm - 5pm
         hr
       .col-md-6
-        a.btn.action-button(href='/events') 
-          h2 Book your party here! 
-        hr
+        
         #imageCarousel.carousel.slide(data-ride='carousel')
           ol.carousel-indicators
             li(data-target='#imageCarousel', data-slide-to='0', class='active')
