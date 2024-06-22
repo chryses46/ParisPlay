@@ -13,7 +13,8 @@ p.indent {
 
 .carousel-item>img {
   aspect-ratio: 16/9;
-  object-fit: fill;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 img.index-title {
@@ -118,6 +119,8 @@ img {
   right: 0;
   background-color: rgb(55 189 191);
   overflow-x: hidden;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
   transition: 0.5s;
   padding-top: 60px;
 }
@@ -129,6 +132,8 @@ img {
   font-size: 2em;
   color: #818181;
   display: block;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
 }
 
@@ -160,6 +165,8 @@ img {
   height: 5px;
   background-color: #333;
   margin: 6px 0;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -171,7 +178,7 @@ img {
   border: 1px solid #38bdbe;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 660px) {
   body {
     font: 14px serif;
     margin-left: 0;
@@ -179,7 +186,7 @@ img {
   }
   .home-intro {
     width: 100%;
-    max-width: 740px;
+    max-width: 640px;
   }
   .page-title {
     font-size: 2em;
@@ -239,9 +246,9 @@ img {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 660px) {
   body {
-    margin: .5em .5em 6em 1em;
+    margin: 1em .5em 6em .5em;
     font: 21px serif;
   }
 
@@ -265,7 +272,8 @@ img {
   img {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
 
   .index-title {
