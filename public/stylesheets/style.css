@@ -19,10 +19,6 @@ img.index-title {
   aspect-ratio: auto;
 }
 
-.flex-grow-1 {
-  flex-grow: 1;
-}
-
 .btn.action-button {
   background-color: greenyellow;
 }
@@ -177,17 +173,29 @@ img {
 @media only screen and (max-width: 768px) {
   body {
     font: 14px serif;
+    margin-left: 0;
+    margin-right: 0;
   }
-
+  .home-intro {
+    width: 100%;
+    max-width: 740px;
+  }
   .page-title {
     font-size: 2em;
   }
 
   .subtitle {
     font-size: 2em;
+  } 
+
+  .carousel-inner .carousel-item img {
+    width: 100%;
   }
 
-
+  .home-gallery{
+    padding: 0;
+    margin: 0;
+  }
   .socials svg {
     height: 2rem;
     width: 2rem;
