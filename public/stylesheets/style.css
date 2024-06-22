@@ -79,6 +79,25 @@ img {
   height: auto;
 }
 
+@media only screen and (min-width: 768px) {
+  .col {
+    height: 5em;
+  }
+  h2 {
+    font-size: medium;
+  }
+  .subtitle {
+    font-size: larger;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .index-title{
+    width: 50%;
+  }
+}
+
 .carousel-item > img {
   aspect-ratio: 16/9;
 }
