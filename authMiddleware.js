@@ -26,6 +26,7 @@ async function ensureAuthenticated(req, res, next) {
       next();
     } catch (error) {
       console.error('Error interacting with the database: ', error);
+      res.redirect('/');
     }
   } else {
     res.redirect('/login');
