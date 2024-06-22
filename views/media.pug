@@ -4,39 +4,42 @@ block content
     .container.page-title-container
         h1.page-title Media
     
-    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
-        ol.carousel-indicators
-            li(data-target='#carouselExampleIndicators', data-slide-to='0', class='active')
-            li(data-target='#carouselExampleIndicators', data-slide-to='1')
-            li(data-target='#carouselExampleIndicators', data-slide-to='2')
-        .carousel-inner
-            .carousel-item.active
-                img(src='/images/playroom/parisplay_playRooms3.jpg', class='d-block w-100', alt='Play Rooms', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_playRooms3.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_cafe1x.jpg', class='d-block w-100', alt='Cafe', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_cafe1x.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_ballpit.jpg', class='d-block w-100', alt='Ballpit', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_ballpit.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_castle.jpg', class='d-block w-100', alt='Castle', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_castle.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_wide.jpg', class='d-block w-100', alt='Wide shot', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_wide.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_partyRoom.jpg', class='d-block w-100', alt='Party room', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_partyRoom.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_rideOns.jpg', class='d-block w-100', alt='Ride Ons', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_rideOns.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_toddlerWall.jpg', class='d-block w-100', alt='Toddler Wall', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_toddlerWall.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_picnic.jpg', class='d-block w-100', alt='Picnic', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_picnic.jpg')
-            .carousel-item
-                img(src='/images/playroom/parisplay_readingCorner.jpg', class='d-block w-100', alt='Reading Corner', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_readingCorner.jpg')
+    .container
+        #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+            ol.carousel-indicators
+                li(data-target='#carouselExampleIndicators', data-slide-to='0', class='active')
+                li(data-target='#carouselExampleIndicators', data-slide-to='1')
+                li(data-target='#carouselExampleIndicators', data-slide-to='2')
+            .carousel-inner
+                .carousel-item.active
+                    img(src='/images/playroom/parisplay_playRooms3.jpg', class='d-block w-100', alt='Play Rooms', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_playRooms3.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_cafe1x.jpg', class='d-block w-100', alt='Cafe', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_cafe1x.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_ballpit.jpg', class='d-block w-100', alt='Ballpit', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_ballpit.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_castle.jpg', class='d-block w-100', alt='Castle', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_castle.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_wide.jpg', class='d-block w-100', alt='Wide shot', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_wide.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_party_room_decorated.jpg', class='d-block w-100', alt='Party room decorated', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_party_room_decorated.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_party_room_decorated_2.jpg', class='d-block w-100', alt='Party room', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_party_room_decorated_2.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_rideOns.jpg', class='d-block w-100', alt='Ride Ons', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_rideOns.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_toddlerWall.jpg', class='d-block w-100', alt='Toddler Wall', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_toddlerWall.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_picnic.jpg', class='d-block w-100', alt='Picnic', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_picnic.jpg')
+                .carousel-item
+                    img(src='/images/playroom/parisplay_readingCorner.jpg', class='d-block w-100', alt='Reading Corner', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_readingCorner.jpg')
 
-        a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
-            span.carousel-control-prev-icon(aria-hidden='true')
-            span.sr-only Previous
-        a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
-            span.carousel-control-next-icon(aria-hidden='true')
-            span.sr-only Next
+            a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+                span.carousel-control-prev-icon(aria-hidden='true')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+                span.carousel-control-next-icon(aria-hidden='true')
+                span.sr-only Next
 
     #imageModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
         .modal-dialog.modal-lg(role='document')

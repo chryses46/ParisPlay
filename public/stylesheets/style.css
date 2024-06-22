@@ -6,6 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+p.indent {
+  text-indent: 1em;
+}
+
 .btn.action-button {
   background-color: greenyellow;
 }
@@ -74,32 +79,19 @@ img {
   height: auto;
 }
 
-@media only screen and (min-width: 768px) {
-  .col {
-    height: 5em;
-  }
-  h2 {
-    font-size: medium;
-  }
-  .subtitle {
-    font-size: larger;
-  }
-  img {
-    width: 100%;
-    height: auto;
-  }
-  .index-title{
-    width: 50%;
-  }
+.carousel-item > img {
+  aspect-ratio: 16/9;
 }
 
-@media only screen and (max-width: 850px) {
-  body{
-    font: 22px serif;
-  }
+img.index-title{
+  aspect-ratio: auto;
 }
 
-@media only screen and (max-width: 500px) {
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+@media only screen and (max-width: 768px) {
   body{
     font: 14px serif;
   }
@@ -118,7 +110,7 @@ img {
     height: auto;
   }
   h2 {
-    font-size: 1rem;
+    font-size: larger;
   }
   footer div a svg {
     width: 2em;
@@ -135,3 +127,37 @@ img {
     padding:0;
   }
 }
+
+@media only screen and (min-width: 768px) {
+  body {
+    margin: .5em .5em 6em 1em;
+    font: 21px serif;
+  }
+  h2 {
+    font-size: medium;
+  }
+  .subtitle {
+    font-size: larger;
+  }
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .index-title{
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  h2 {
+    font-size:large;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  body{
+    font: 22px serif;
+  }
+}
+

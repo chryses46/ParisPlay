@@ -12,9 +12,9 @@ block content
           h2 Book your party here!     
   br
   .container
-    .row
-      .col-md-3
-       h2 Weekly Hours
+    .row.align-items-stretch
+      .col-md-3.d-flex.flex-column.flex-grow-1
+        h2.subtitle Hours
         h2 Monday: 10am - 5pm
         h2 Tuesday: 10:30am - 7pm
         h2 Wednesday: 10am - 7pm
@@ -23,8 +23,7 @@ block content
         h2 Saturday: 12pm - 7pm 
         h2 Sunday: 12pm - 5pm
         hr
-      .col-md-6
-        
+      .col-md-9.d-flex.flex-column.flex-grow-1  
         #imageCarousel.carousel.slide(data-ride='carousel')
           ol.carousel-indicators
             li(data-target='#imageCarousel', data-slide-to='0', class='active')
@@ -42,7 +41,9 @@ block content
             .carousel-item
                 img(src='/images/playroom/parisplay_wide.jpg', class='d-block w-100', alt='Wide shot', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_wide.jpg')
             .carousel-item
-                img(src='/images/playroom/parisplay_partyRoom.jpg', class='d-block w-100', alt='Party room', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_partyRoom.jpg')
+                img(src='/images/playroom/parisplay_party_room_decorated.jpg', class='d-block w-100', alt='Party room decorated', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_party_room_decorated.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_party_room_decorated_2.jpg', class='d-block w-100', alt='Party room', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_party_room_decorated_2.jpg')
             .carousel-item
                 img(src='/images/playroom/parisplay_rideOns.jpg', class='d-block w-100', alt='Ride Ons', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_rideOns.jpg')
             .carousel-item
@@ -72,38 +73,49 @@ block content
                 $('#modalImage').attr('src', image);
             });
         hr
-      .col-md-3 
-        h2.subtitle Events Calendar
-        img(src='images/info_graphics/event_schedule.png' alt='event schedule')
+    .row.align-items-stretch
+      .col-md-6.d-flex.flex-column.flex-grow-1 
+        h2.subtitle Events
+        a(href='images/info_graphics/event_schedule.png') 
+          img(src='images/info_graphics/event_schedule.png' alt='event schedule')
         hr
-    .row 
-      .col-md-3
+      .col-md-6.d-flex.flex-column.flex-grow-1
         h2.subtitle Prices
-        img(src='/images/info_graphics/admission_pricing.png' alt='admission pricing' style='max-width: 100%; height: auto; text-align:center')
+        a(href='/images/info_graphics/admission_pricing.png') 
+          img(src='/images/info_graphics/admission_pricing.png' alt='admission pricing' style='max-width: 100%; height: auto; text-align:center')
         hr
-      .col-md-3
-        h2.subtitle Paties!
-        img(src='/images/info_graphics/party_packages.png' alt='party packages' style='max-width: 100%; height: auto; text-align:center')
+    .row.align-items-stretch
+      .col-md-6.d-flex.flex-column.flex-grow-1
+        h2.subtitle Parties!
+        a(href='/images/info_graphics/party_packages.png') 
+          img(src='/images/info_graphics/party_packages.png' alt='party packages' style='max-width: 100%; height: auto; text-align:center')
         hr
-      .col-md-3
+      .col-md-6.d-flex.flex-column.flex-grow-1
         h2.subtitle Food!
-        img(src='/images/food_display.jpeg' alt='food display' style='max-width: 100%; height: auto; text-align:center')
+        a(href='/images/food_display.jpeg') 
+          img(src='/images/food_display.jpeg' alt='food display' style='max-width: 100%; height: auto; text-align:center')
         hr
-      .col-md-3
+    .row.align-items-stretch 
+      .col-md-6.d-flex.flex-column.flex-grow-1
         h2.subtitle Menu
-        img(src='/images/info_graphics/menu.png' alt='menu' style='max-width: 100%; height: auto; text-align:center')
+        a(href='/images/info_graphics/menu.png') 
+          img(src='/images/info_graphics/menu.png' alt='menu' style='max-width: 100%; height: auto; text-align:center')
         hr
-    .row 
-      .col-md-6
+      .col-md-6.d-flex.flex-column.flex-grow-1
         h2.subtitle Become a Member! 
-        img(src='images/info_graphics/memberships.png' alt='memberships')
+        a(href='images/info_graphics/memberships.png') 
+          img(src='images/info_graphics/memberships.png' alt='memberships')
         hr
-      .col-md-6
-        .container
-          h2.subtitle Deals!
-          img(src='/images/info_graphics/last_2_hours.png' alt='Save 40% last 2 hours' style='max-width: 100%; height: auto; text-align:center')
-        br
-        .container
-          img(src='/images/info_graphics/member_savings.png' alt='member_savings' style='max-width: 100%; height: auto; text-align:center')
+    .row.align-items-stretch
+      .col-md-6.d-flex.flex-column
+        div.flex-grow-1
+          h2.subtitle Big Savings! 
+          a(href='/images/info_graphics/last_2_hours.png') 
+            img(src='/images/info_graphics/last_2_hours.png' alt='Save 40% last 2 hours' style='max-width: 100%; height: auto; text-align:center')
         hr
-      
+      .col-md-6.d-flex.flex-column 
+        div.flex-grow-1
+          h2.subtitle Member Savings!
+          a(href='/images/info_graphics/member_savings.png') 
+            img(src='/images/info_graphics/member_savings.png' alt='member_savings' style='max-width: 100%; height: auto; text-align:center')
+        hr
