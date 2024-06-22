@@ -19,9 +19,20 @@ html
       if title != 'Paris Play'
         .div.w-100(style='background-color: rgb(55 189 191); height: 3em; display: flex; align-items: center; justify-content: center;')
           img(src='/images/logo_nobg.png' style='max-width: 50%; height: 100%;')
-      
+      button.hamburger
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      nav#mySidenav.sidenav
+        a.closebtn(href='javascript:void(0)' onclick='closeNav()') ×
+        a.btn.mx-auto(href='/') Home
+        a.btn.mx-auto(href='/about') About
+        a.btn.mx-auto(href='/media') Media
+        a.btn.mx-auto(href='/events') Events
+        a.btn.mx-auto(href='/profile') Profile
+
     block content
-    footer.fixed-bottom
+    footer.nav-footer.fixed-bottom
       .div.w-100(style='background-color: rgb(55 189 191);')
         .row.mx-auto
           a.btn.mx-auto(type="button" href="/")
@@ -41,3 +52,23 @@ html
           a.btn.mx-auto(type='button' href='/profile')
             svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(157,233,234)" class="bi bi-person" viewBox="0 0 16 16")
               path(d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z")
+  script. 
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "33.33%";
+    }
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    document.querySelector('.hamburger').addEventListener('click', openNav);
+    document.addEventListener('click', function(event) {
+      var isClickInside = document.getElementById('mySidenav').contains(event.target);
+      var isHamburgerClicked = document.querySelector('.hamburger').contains(event.target);
+      if (!isClickInside && !isHamburgerClicked) {
+        closeNav();
+      }
+    });
+    window.addEventListener('resize', function() {
+      if (window.innerWidth < 768) {
+        closeNav();
+      }
+    });

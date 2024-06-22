@@ -1,126 +1,137 @@
 extends layout
 
 block content
-  .container
-    img(src='/images/logo_nobg.png' style='max-width: 100%; height: auto; text-align:center')
-    h2.slogan indoor children's playplace in Paris, TX
+  .container  
+    .row
+      .col-md-12
+        img.index-title(src='/images/logo_nobg.png' alt='logo image' style='max-width: 100%; height: auto; text-align:center')
+        h2.slogan indoor children's playplace in Paris, TX
+        h2.address 
+          a(href='https://maps.app.goo.gl/QjYMd8tCUiMcw2yy8' target='blank') 120 27th St. NE, Ste 200 Paris, Texas 75460
+        a.btn.action-button(href='/events') 
+          h2 Book your party here!     
   br
-  .container
-    h2 
-      a(href='https://maps.app.goo.gl/QjYMd8tCUiMcw2yy8' target='blank') 120 27th St. NE, Ste 200 Paris, Texas 75460
-    h2 Weekly Hours
-    h2 Monday: 10am - 5pm
-    h2 Tuesday: 10:30am - 7pm
-    h2 Wednesday: 10am - 7pm
-    h2 Thursday: 10:30am - 7pm 
-    h2 Friday: 10:30am - 7pm
-    h2 Saturday: 12pm - 7pm 
-    h2 Sunday: 12pm - 5pm
-  hr
-  .container 
-    a.btn.action-button(href='/events') 
-      h2 Book your party here! 
-  hr
-  #imageCarousel.carousel.slide(data-ride='carousel')
-    ol.carousel-indicators
-      li(data-target='#imageCarousel', data-slide-to='0', class='active')
-      li(data-target='#imageCarousel', data-slide-to='1')
-      li(data-target='#imageCarousel', data-slide-to='2')
-    .carousel-inner
-      .carousel-item.active
-          img(src='/images/playroom/parisplay_playRooms3.jpg', class='d-block w-100', alt='Play Rooms', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_playRooms3.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_cafe1x.jpg', class='d-block w-100', alt='Cafe', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_cafe1x.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_ballpit.jpg', class='d-block w-100', alt='Ballpit', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_ballpit.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_castle.jpg', class='d-block w-100', alt='Castle', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_castle.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_wide.jpg', class='d-block w-100', alt='Wide shot', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_wide.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_partyRoom.jpg', class='d-block w-100', alt='Party room', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_partyRoom.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_rideOns.jpg', class='d-block w-100', alt='Ride Ons', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_rideOns.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_toddlerWall.jpg', class='d-block w-100', alt='Toddler Wall', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_toddlerWall.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_picnic.jpg', class='d-block w-100', alt='Picnic', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_picnic.jpg')
-      .carousel-item
-          img(src='/images/playroom/parisplay_readingCorner.jpg', class='d-block w-100', alt='Reading Corner', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_readingCorner.jpg')
+  .container.home-intro
+    .row.align-items-stretch
+      .col-md-8.home-gallery.d-flex.flex-column.flex-grow-1  
+        #imageCarousel.carousel.slide(data-ride='carousel')
+          ol.carousel-indicators
+            li(data-target='#imageCarousel', data-slide-to='0', class='active')
+            li(data-target='#imageCarousel', data-slide-to='1')
+            li(data-target='#imageCarousel', data-slide-to='2')
+          .carousel-inner
+            .carousel-item.active
+                img(src='/images/playroom/parisplay_playRooms3.jpg', class='d-block w-100', alt='Play Rooms', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_playRooms3.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_cafe1x.jpg', class='d-block w-100', alt='Cafe', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_cafe1x.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_ballpit.jpg', class='d-block w-100', alt='Ballpit', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_ballpit.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_castle.jpg', class='d-block w-100', alt='Castle', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_castle.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_wide.jpg', class='d-block w-100', alt='Wide shot', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_wide.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_party_room_decorated.jpg', class='d-block w-100', alt='Party room decorated', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_party_room_decorated.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_party_room_decorated_2.jpg', class='d-block w-100', alt='Party room', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_party_room_decorated_2.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_rideOns.jpg', class='d-block w-100', alt='Ride Ons', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_rideOns.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_toddlerWall.jpg', class='d-block w-100', alt='Toddler Wall', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_toddlerWall.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_picnic.jpg', class='d-block w-100', alt='Picnic', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_picnic.jpg')
+            .carousel-item
+                img(src='/images/playroom/parisplay_readingCorner.jpg', class='d-block w-100', alt='Reading Corner', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_readingCorner.jpg')
 
-    a.carousel-control-prev(href='#imageCarousel', role='button', data-slide='prev')
-      span.carousel-control-prev-icon(aria-hidden='true')
-      span.sr-only Previous
-    a.carousel-control-next(href='#imageCarousel', role='button', data-slide='next')
-      span.carousel-control-next-icon(aria-hidden='true')
-      span.sr-only Next
-  #imageModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-    .modal-dialog.modal-lg(role='document')
-      .modal-content
-        .modal-body
-          img#modalImage(src='', class='img-fluid')
-  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
-  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
-  script.
-      $('#imageCarousel').on('slide.bs.carousel', function (e) {
-          var image = $(e.relatedTarget).find('img').data('image');
-          $('#modalImage').attr('src', image);
-      });
-  hr
-  .container.socials
-    .row 
-      .col
-        a(href="https://www.facebook.com/parisplayptx" target="blank")
-          svg(xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="black" class="bi bi-facebook" viewBox="0 0 16 16")
-            path(d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951")
-      .col 
-        a(href="https://www.instagram.com/parisplayptx" target="blank")
-          svg(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-instagram" viewBox="0 0 16 16")
-            path(d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334")
-      .col  
-        a(href="https://m.me/parisplayptx" target="blank")
-          svg(xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="black" class="bi bi-messenger" viewBox="0 0 16 16")
-            path(d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.64.64 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.64.64 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76m5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z")
-      .col 
-        a(href="https://www.tiktok.com/@paris.play" target="blank")
-          svg(xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="black" class="bi bi-tiktok" viewBox="0 0 16 16")
-            path(d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z")
-  hr
-  .container 
-    h2.subtitle Events Calendar
-    img(src='images/info_graphics/event_schedule.png')
-  hr
-  .container
-    h2.subtitle Prices 
-    .container
-      img(src='/images/admissionPricing_Updated.png' style='max-width: 100%; height: auto; text-align:center')
-    br
-    .container
-      img(src='/images/info_graphics/party_packages.png' style='max-width: 100%; height: auto; text-align:center')
-  hr
-  .container
-    h2.subtitle Food! 
-    .container
-      img(src='/images/foodDisplay.jpeg' style='max-width: 100%; height: auto; text-align:center')
-    br
-    .container
-      img(src='/images/menu_updated.png' style='max-width: 100%; height: auto; text-align:center')
-  hr
-  .container 
-    h2.subtitle Become a Member! 
-    img(src='images/Memberships_updated.png')
-  hr
-  .container
-    h2.subtitle Deals! 
-    .container
-      img(src='/images/last2Hours.png' style='max-width: 100%; height: auto; text-align:center')
-    br
-    .container
-      img(src='/images/memberSavings.png' style='max-width: 100%; height: auto; text-align:center')
-  hr
-  .container.fb-view
-    script(src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" async defer crossorigin="anonymous")
-    div(class="fb-page" data-href="https://www.facebook.com/parisplayptx" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true")
-      blockquote(cite="https://www.facebook.com/parisplayptx" class="fb-xfbml-parse-ignore")
-        a(href="https://www.facebook.com/parisplayptx") Facebook
+          a.carousel-control-prev(href='#imageCarousel', role='button', data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+          a.carousel-control-next(href='#imageCarousel', role='button', data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
+        #imageModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+          .modal-dialog.modal-lg(role='document')
+            .modal-content
+              .modal-body
+                img#modalImage(src='', class='img-fluid')
+        script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+        script.
+            $('#imageCarousel').on('slide.bs.carousel', function (e) {
+                var image = $(e.relatedTarget).find('img').data('image');
+                $('#modalImage').attr('src', image);
+            });
+        hr
+      .col-md-4.hours.d-flex.flex-column.flex-grow-1
+        h2.subtitle Hours
+        table.table
+          tbody
+            tr
+              td Monday
+              td 10:00am - 5pm
+            tr
+              td Tuesday
+              td 10:30am - 7pm
+            tr
+              td Wednesday
+              td 10:00am - 7pm
+            tr
+              td Thursday
+              td 10:30am - 7pm
+            tr
+              td Friday
+              td 10:30am - 7pm
+            tr
+              td Saturday
+              td 12:00pm - 7pm
+            tr
+              td Sunday
+              td 12:00pm - 5pm
+        hr
+    .row.align-items-stretch
+      .col-md-6.d-flex.flex-column.flex-grow-1 
+        h2.subtitle Events
+        a(href='images/info_graphics/event_schedule.png') 
+          img(src='images/info_graphics/event_schedule.png' alt='event schedule')
+        hr
+      .col-md-6.d-flex.flex-column.flex-grow-1
+        h2.subtitle Prices
+        a(href='/images/info_graphics/admission_pricing.png') 
+          img(src='/images/info_graphics/admission_pricing.png' alt='admission pricing' style='max-width: 100%; height: auto; text-align:center')
+        hr
+    .row.align-items-stretch
+      .col-md-6.d-flex.flex-column.flex-grow-1
+        h2.subtitle Parties!
+        a(href='/images/info_graphics/party_packages.png') 
+          img(src='/images/info_graphics/party_packages.png' alt='party packages' style='max-width: 100%; height: auto; text-align:center')
+        hr
+      .col-md-6.d-flex.flex-column.flex-grow-1
+        h2.subtitle Food!
+        a(href='/images/food_display.jpeg') 
+          img(src='/images/food_display.jpeg' alt='food display' style='max-width: 100%; height: auto; text-align:center')
+        hr
+    .row.align-items-stretch 
+      .col-md-6.d-flex.flex-column.flex-grow-1
+        h2.subtitle Menu
+        a(href='/images/info_graphics/menu.png') 
+          img(src='/images/info_graphics/menu.png' alt='menu' style='max-width: 100%; height: auto; text-align:center')
+        hr
+      .col-md-6.d-flex.flex-column.flex-grow-1
+        h2.subtitle Become a Member! 
+        a(href='images/info_graphics/memberships.png') 
+          img(src='images/info_graphics/memberships.png' alt='memberships')
+        hr
+    .row.align-items-stretch
+      .col-md-6.d-flex.flex-column
+        div.flex-grow-1
+          h2.subtitle Big Savings! 
+          a(href='/images/info_graphics/last_2_hours.png') 
+            img(src='/images/info_graphics/last_2_hours.png' alt='Save 40% last 2 hours' style='max-width: 100%; height: auto; text-align:center')
+        hr
+      .col-md-6.d-flex.flex-column 
+        div.flex-grow-1
+          h2.subtitle Member Savings!
+          a(href='/images/info_graphics/member_savings.png') 
+            img(src='/images/info_graphics/member_savings.png' alt='member_savings' style='max-width: 100%; height: auto; text-align:center')
+        hr
