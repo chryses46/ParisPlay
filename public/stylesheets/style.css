@@ -10,153 +10,281 @@ a {
 p.indent {
   text-indent: 1em;
 }
-.carousel-item > img {
+
+.carousel-item>img {
   aspect-ratio: 16/9;
 }
-img.index-title{
+
+img.index-title {
   aspect-ratio: auto;
 }
 
 .flex-grow-1 {
   flex-grow: 1;
 }
+
 .btn.action-button {
   background-color: greenyellow;
 }
-.btn.action-button > h2{
+
+.btn.action-button>h2 {
   margin: 0;
 }
-.page-title{
-    font-size: 4em;
-    text-align: center;
-    font-family: serif;
+
+.page-title {
+  font-size: 4em;
+  text-align: center;
+  font-family: serif;
 }
-.page-title-container{
-    margin-top: 3em;
+
+.page-title-container {
+  margin-top: 3em;
 }
+
 .slogan {
-  color:cadetblue;
+  color: cadetblue;
   font-style: italic;
 }
+
 .subtitle {
-    font-size: 4em;
-    text-align: center;
-    font-family: serif;
-    text-decoration: none;
-    color: coral;
+  font-size: 4em;
+  text-align: center;
+  font-family: serif;
+  text-decoration: none;
+  color: coral;
 }
+
 .container {
   text-align: center;
 }
-.socials svg{
+
+.socials svg {
   height: 4rem;
   width: 4rem;
 }
+
 footer div a svg {
   width: 4rem;
   height: 4rem;
 }
-footer div a btn-primary{
+
+footer div a btn-primary {
   background-color: none;
   border-color: none;
 }
+
 /*About Page*/
-.about-info{
+.about-info {
   font-size: 2em;
 }
-.about-info svg{
+
+.about-info svg {
   width: 4rem;
   height: 4rem;
 }
-.about-info > .table-responsive {
+
+.about-info>.table-responsive {
   overflow-x: clip;
 }
-.about-info > .table td {
+
+.about-info>.table td {
   border: none;
 }
+
 .wrap-text {
   word-wrap: break-word;
 }
+
 /*My Profile Page*/
-.member > ol > li {
+.member>ol>li {
   list-style-image: url('/images/icons/star-fill.svg');
   text-align: left;
 }
+
 img {
   width: 100%;
   height: auto;
 }
 
+.nav-footer {
+  display: block;
+}
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(55 189 191);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 2em;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the hamburger menu */
+.hamburger {
+  cursor: pointer;
+  position: absolute;
+  top: .5em;
+  right: .5em;
+}
+
+.icon-bar {
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.hours {
+  text-align: left;
+}
+
+.hours>.table td {
+  border: 1px solid #38bdbe;
+}
+
 @media only screen and (max-width: 768px) {
-  body{
+  body {
     font: 14px serif;
   }
-  .page-title{
+
+  .page-title {
     font-size: 2em;
   }
+
   .subtitle {
     font-size: 2em;
   }
-  .socials svg{
+
+
+  .socials svg {
     height: 2rem;
     width: 2rem;
   }
+
   img {
     width: 100%;
     height: auto;
   }
+
+  .slogan,
+  .address {
+    font-size: small;
+  }
+
   h2 {
     font-size: larger;
   }
+
   footer div a svg {
     width: 2em;
     height: 2rem;
   }
-  .about-info{
+
+  .about-info {
     font-size: 1em;
   }
-  .about-info svg{
+
+  .about-info svg {
     width: 2rem;
     height: 2rem;
   }
-  .fb-view{
-    padding:0;
+
+  .fb-view {
+    padding: 0;
+  }
+
+  .hamburger {
+    display: none;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  /* .col {
-    height: 5em;
-  } */
   body {
     margin: .5em .5em 6em 1em;
     font: 21px serif;
   }
+
   h2 {
     font-size: medium;
   }
+
   .subtitle {
     font-size: 2em;
   }
+
+  .hours {
+    text-align: left;
+  }
+
+  .hours>.table td {
+    padding: 0 0 .5em .5em;
+    font-size: initial;
+  }
+
   img {
     width: 100%;
     height: auto;
     object-fit: contain;
   }
-  .index-title{
+
+  .index-title {
     width: 50%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-footer {
+    display: none;
   }
 }
 
 @media only screen and (min-width: 992px) {
   h2 {
-    font-size:large;
+    font-size: large;
+  }
+
+  .hours>.table td {
+    padding: 0 0 1em 1em;
+    font-size: large;
   }
 }
 
 @media only screen and (max-width: 850px) {
-  body{
+  body {
     font: 22px serif;
   }
 }
-

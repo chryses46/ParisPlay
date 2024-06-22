@@ -6,14 +6,14 @@ block content
       .col-md-12
         img.index-title(src='/images/logo_nobg.png' alt='logo image' style='max-width: 100%; height: auto; text-align:center')
         h2.slogan indoor children's playplace in Paris, TX
-        h2 
+        h2.address 
           a(href='https://maps.app.goo.gl/QjYMd8tCUiMcw2yy8' target='blank') 120 27th St. NE, Ste 200 Paris, Texas 75460
         a.btn.action-button(href='/events') 
           h2 Book your party here!     
   br
   .container
     .row.align-items-stretch
-      .col-md-9.d-flex.flex-column.flex-grow-1  
+      .col-md-8.d-flex.flex-column.flex-grow-1  
         #imageCarousel.carousel.slide(data-ride='carousel')
           ol.carousel-indicators
             li(data-target='#imageCarousel', data-slide-to='0', class='active')
@@ -63,17 +63,33 @@ block content
                 $('#modalImage').attr('src', image);
             });
         hr
-      .col-md-3.d-flex.flex-column.flex-grow-1
+      .col-md-4.hours.d-flex.flex-column.flex-grow-1
         h2.subtitle Hours
-        h2 Monday: 10am - 5pm
-        h2 Tuesday: 10:30am - 7pm
-        h2 Wednesday: 10am - 7pm
-        h2 Thursday: 10:30am - 7pm 
-        h2 Friday: 10:30am - 7pm
-        h2 Saturday: 12pm - 7pm 
-        h2 Sunday: 12pm - 5pm
+        table.table
+          tbody
+            tr
+              td Monday
+              td 10am - 5pm
+            tr
+              td Tuesday
+              td 10:30am - 7pm
+            tr
+              td Wednesday
+              td 10am - 7pm
+            tr
+              td Thursday
+              td 10:30am - 7pm
+            tr
+              td Friday
+              td 10:30am - 7pm
+            tr
+              td Saturday
+              td 12pm - 7pm
+            tr
+              td Sunday
+              td 12pm - 5pm
         hr
-      .row.align-items-stretch
+    .row.align-items-stretch
       .col-md-6.d-flex.flex-column.flex-grow-1 
         h2.subtitle Events
         a(href='images/info_graphics/event_schedule.png') 
