@@ -1,7 +1,15 @@
 extends layout
 block content
     .container.page-title-container
-        h1.page-title Event Booking
+        h1.page-title Events
+    .container
+        .row.align-items-stretch
+            .col
+                h2.subtitle Check out these events!
+        .row.align-items-stretch
+            .col-md-3
+                img(src='/images/info_graphics/parent_night.png', alt='Parent night out info')
+        hr
     .container 
         p Please fill out the form below to begin booking your next event! 
         form(action='/events/book' method='post' id='event_form')
