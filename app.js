@@ -12,6 +12,8 @@ var mediaRouter = require('./routes/media');
 var privacyRouter = require('./routes/privacy');
 var profileRouter = require('./routes/profile');
 var adminRouter = require('./routes/admin');
+var waiverRouter = require('./routes/waivers');
+
 var app = express();
 var { ensureAuthenticated, adminOnly, getIdentity } = require('./authMiddleware');
 const { auth } = require('express-openid-connect');
@@ -59,6 +61,7 @@ app.use('/events', getIdentity, eventsRouter);
 app.use('/admin', ensureAuthenticated, adminOnly, adminRouter);
 app.use('/about', aboutRouter);
 app.use('/media', mediaRouter);
+app.use('/waivers', waiverRouter);
 app.use('/privacy', privacyRouter);
 app.use('/profile', ensureAuthenticated, profileRouter);
 // catch 404 and forward to error handler

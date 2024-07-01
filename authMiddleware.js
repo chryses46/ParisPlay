@@ -1,4 +1,5 @@
 const { User, Child, Membership } = require('./models');
+const membership = require('./models/membership');
 
 async function ensureAuthenticated(req, res, next) {
   if (req.oidc.isAuthenticated()) {
@@ -62,7 +63,8 @@ function configRequestUser (dataUser){
     email: dataUser.dataValues.email,
     name: dataUser.dataValues.name,
     phone: dataUser.dataValues.phone,
-    children: [],
+    children:[],
+    membership: dataUser.dataValues.membership ? dataUser.dataValues.membership[0].dataValues: null
   };
 
   if(dataUser.dataValues.children != null && dataUser.dataValues.children.length > 0){
@@ -70,7 +72,7 @@ function configRequestUser (dataUser){
       user.children.push(child.dataValues);
     });
   };
-
+  
   if (user.membership && user.membership.num_visits == 0) {
     user.membership.num_visits = 'unlimited';
   }

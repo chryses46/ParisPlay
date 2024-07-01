@@ -1,0 +1,12 @@
+extends layout
+block content
+    .container.page-title-container
+        h1.page-title Waivers 
+    .container
+        for waiver_type in waiver_types //(from DB) 
+            .row 
+                a(href=`/waivers/view_waiver?waiver_uuid=${waiver_type.uuid}`)
+                    h2.subtitle #{waiver_type.name}
+
+    
+    
