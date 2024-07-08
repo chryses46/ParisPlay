@@ -65,7 +65,15 @@ img.index-title {
   height: 2rem;
   width: 2rem;
 }
+/*Header*/
+.header-home-link{
+  text-align: center;
+}
 
+.header-home-link > img {
+  height: 100%;
+  width: 50%;
+}
 footer div a svg {
   width: 4rem;
   height: 4rem;
