@@ -1,5 +1,9 @@
 
 /*Generic Styling*/
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 1em 1em 6em 1em;
   font: 27px serif;
@@ -191,6 +195,10 @@ img {
   border: 1px solid #38bdbe;
 }
 
+.jump-to-button{
+  display: none;
+}
+
 @media only screen and (max-width: 660px) {
   body {
     font: 14px serif;
@@ -257,8 +265,18 @@ img {
   .hamburger {
     display: none;
   }
-}
 
+  
+}
+@media only screen and (max-width: 768px) {
+  .jump-to-button{
+    display: block;
+    margin: 0 4em;
+  }
+  .event-listing> .row > .col-md-3 {
+    margin: 0 auto 2em auto;
+  }
+}
 @media only screen and (min-width: 660px) {
   body {
     margin: 1em .5em 6em .5em;
