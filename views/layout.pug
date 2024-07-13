@@ -19,7 +19,9 @@ html
     header.fixed-top
       if title != 'Paris Play'
         .div.w-100(style='background-color: rgb(55 189 191); height: 3em; display: flex; align-items: center; justify-content: center;')
-          img(src='/images/logo_nobg.png' style='max-width: 50%; height: 100%;')
+          a(href='/').header-home-link 
+            img(src='/images/logo_nobg.png')
+            
       button.hamburger
         span.icon-bar
         span.icon-bar

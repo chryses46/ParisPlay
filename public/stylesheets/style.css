@@ -1,3 +1,9 @@
+
+/*Generic Styling*/
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 1em 1em 6em 1em;
   font: 27px serif;
@@ -11,6 +17,15 @@ p.indent {
   text-indent: 1em;
 }
 
+.btn.action-button {
+  background-color: greenyellow;
+}
+
+.btn.action-button>h2 {
+  margin: 0;
+}
+
+/*Image Carousel*/
 .carousel-item>img {
   aspect-ratio: 16/9;
   -o-object-fit: fill;
@@ -19,14 +34,6 @@ p.indent {
 
 img.index-title {
   aspect-ratio: auto;
-}
-
-.btn.action-button {
-  background-color: greenyellow;
-}
-
-.btn.action-button>h2 {
-  margin: 0;
 }
 
 .page-title {
@@ -57,10 +64,20 @@ img.index-title {
 }
 
 .socials svg {
-  height: 4rem;
-  width: 4rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 2rem;
+  width: 2rem;
+}
+/*Header*/
+.header-home-link{
+  text-align: center;
 }
 
+.header-home-link > img {
+  height: 100%;
+  width: 50%;
+}
 footer div a svg {
   width: 4rem;
   height: 4rem;
@@ -178,6 +195,10 @@ img {
   border: 1px solid #38bdbe;
 }
 
+.jump-to-button{
+  display: none;
+}
+
 @media only screen and (max-width: 660px) {
   body {
     font: 14px serif;
@@ -244,8 +265,18 @@ img {
   .hamburger {
     display: none;
   }
-}
 
+  
+}
+@media only screen and (max-width: 768px) {
+  .jump-to-button{
+    display: block;
+    margin: 0 4em;
+  }
+  .event-listing> .row > .col-md-3 {
+    margin: 0 auto 2em auto;
+  }
+}
 @media only screen and (min-width: 660px) {
   body {
     margin: 1em .5em 6em .5em;
