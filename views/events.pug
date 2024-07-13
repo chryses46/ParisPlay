@@ -1,8 +1,26 @@
 extends layout
 block content
     .container.page-title-container
-        h1.page-title Event Booking
-    .container 
+        h1.page-title Events
+        a.btn.action-button.jump-to-button(type='button' href='#party-form') Jump to birthday party booking!
+        
+    .container.event-listing 
+        h2.subtitle Check out these events!
+        .row.align-items-stretch
+            .col-md-3
+                a(href='/images/info_graphics/pno.png') 
+                    img(src='/images/info_graphics/pno.png', alt='Parent night out info')
+            .col-md-3
+                a(href='/images/info_graphics/mom_day_out.png')
+                    img(src='/images/info_graphics/mom_day_out.png', alt='Mother\'s day out')
+            .col-md-3
+                a(href='/images/info_graphics/mommy_me_asl.png')
+                    img(src='/images/info_graphics/mommy_me_asl.png', alt='Mommy and me ASL info')
+            .col-md-3
+                a(href='/images/info_graphics/mommy_meet.png')
+                    img(src='/images/info_graphics/mommy_meet.png', alt='Mommy meet info')
+        hr
+    .container#party-form
         p Please fill out the form below to begin booking your next event! 
         form(action='/events/book' method='post' id='event_form')
             div.form-group.row

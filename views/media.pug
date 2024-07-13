@@ -7,9 +7,17 @@ block content
     .container
         #carouselExampleIndicators.carousel.slide(data-ride='carousel')
             ol.carousel-indicators
-                li(data-target='#carouselExampleIndicators', data-slide-to='0', class='active')
-                li(data-target='#carouselExampleIndicators', data-slide-to='1')
-                li(data-target='#carouselExampleIndicators', data-slide-to='2')
+                li(data-target='#imageCarousel', data-slide-to='0', class='active')
+                li(data-target='#imageCarousel', data-slide-to='1')
+                li(data-target='#imageCarousel', data-slide-to='2')
+                li(data-target='#imageCarousel', data-slide-to='3')
+                li(data-target='#imageCarousel', data-slide-to='4')
+                li(data-target='#imageCarousel', data-slide-to='5')
+                li(data-target='#imageCarousel', data-slide-to='6')
+                li(data-target='#imageCarousel', data-slide-to='7')
+                li(data-target='#imageCarousel', data-slide-to='8')
+                li(data-target='#imageCarousel', data-slide-to='9')
+                li(data-target='#imageCarousel', data-slide-to='10')
             .carousel-inner
                 .carousel-item.active
                     img(src='/images/playroom/parisplay_playRooms3.jpg', class='d-block w-100', alt='Play Rooms', data-toggle='modal', data-target='#imageModal', data-image='/images/playroom/parisplay_playRooms3.jpg')
@@ -54,3 +62,4 @@ block content
             var image = $(e.relatedTarget).find('img').data('image');
             $('#modalImage').attr('src', image);
         });
+    include shared/social.pug
