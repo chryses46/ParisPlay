@@ -273,7 +273,7 @@ img {
     display: block;
     margin: 0 4em;
   }
-  .event-listing> .row > .col-md-3 {
+  .event-listing> .row > .col-md-6 {
     margin: 0 auto 2em auto;
   }
 }
