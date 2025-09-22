@@ -17,13 +17,13 @@ const { auth } = require('express-openid-connect');
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: 'rhX1UthnUTRENT_iPXHRCRd6cJJVnBTWFJT2H-36VrVwEYUHQANvF_E26nxUbgNP', //move this to somewhere safe later
-  baseURL: 'https://paris-play-8aaa1bdd35b5.herokuapp.com',
-  clientID: 'YdKkcUZMTGygJqDAUb2ntYInLltPFaNV',
-  issuerBaseURL: 'https://dev-t8xahfjokzvnnmtq.us.auth0.com',
+  secret: process.env.OAUTH_SEC, 
+  baseURL: process.env.APP_URL,
+  clientID: process.env.OAUTH_ID,
+  issuerBaseURL: process.env.OAUTH_BASE_URL,
   routes: {
     login: false,
-    postLogoutRedirect: 'https://paris-play-8aaa1bdd35b5.herokuapp.com',
+    postLogoutRedirect: process.env.APP_URL,
   },
 };
 // auth router attaches /login, /logout, and /callback routes to the baseURL
@@ -35,7 +35,7 @@ app.get('/login', (req, res) =>
     authorizationParams: {
       redirect_uri: req.app.get('env') === 'development' ? 
         'http://localhost:3000/callback' : 
-        "https://paris-play-8aaa1bdd35b5.herokuapp.com/callback"
+        `${process.env.APP_URL}/callback`
     },
   })
 );
